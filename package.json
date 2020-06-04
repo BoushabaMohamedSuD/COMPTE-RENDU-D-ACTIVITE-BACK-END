@@ -1,0 +1,19 @@
+{
+  "name": "compte-rendu-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BoushabaMohamedSuD/COMPTE-RENDU-D-ACTIVITE-BACK-END.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BoushabaMohamedSuD/COMPTE-RENDU-D-ACTIVITE-BACK-END/issues"
+  },
+  "homepage": "https://github.com/BoushabaMohamedSuD/COMPTE-RENDU-D-ACTIVITE-BACK-END#readme"
+}
