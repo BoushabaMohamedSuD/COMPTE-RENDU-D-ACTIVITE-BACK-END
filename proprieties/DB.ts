@@ -12,14 +12,14 @@ export class DB {
         min: Number,
         acquire: Number,
         idle: Number
-    },
+    };
 
 
 
     private constructor() {
-        this.database = 'Iot';
-        this.username = 'Iot';
-        this.password = 'Iot';
+        this.database = 'CRA';
+        this.username = 'root';
+        this.password = 'Mysql2016';
         this.dialect = "mysql";
         this.host = 'localhost';
 
@@ -31,6 +31,25 @@ export class DB {
         };
 
 
+    }
+
+    public getdatabase(): string {
+        return this.database;
+    }
+    public getusername(): string {
+        return this.username;
+    }
+    public getpassword(): string {
+        return this.password;
+    }
+    public getdialect(): any {
+        return this.dialect;
+    }
+    public gethost(): string {
+        return this.host;
+    }
+    public getpool(): any {
+        return this.pool;
     }
 
 
