@@ -52,12 +52,15 @@ export class User extends Model<User> {
     UpdatedAt!: Date;
 
 
-    @ForeignKey(() => Presence)
-    PresenceId!: number;
-    @ForeignKey(() => Absence)
-    AbsenceId!: number;
-    @ForeignKey(() => Comment)
-    CommentId!: number;
+
+
+
+    @HasMany(() => Presence, 'UserId')
+    presences?: Presence[];
+    @HasMany(() => Absence, 'UserId')
+    absences?: Absence[];
+    @HasMany(() => Comment, 'UserId')
+    comments?: Comment[];
 
 
     /*@BelongsTo(() => RasberySql)

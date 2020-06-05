@@ -1,3 +1,6 @@
+import { Comment } from './models/Comment';
+import { Absence } from './models/Absence';
+import { Presence } from './models/Presence';
 import { User } from './models/User';
 import { DB } from './../proprieties/DB';
 
@@ -14,5 +17,5 @@ export const sequelize = new Sequelize({
 
 
 
-    models: [User],
+    models: [User, Presence, Absence, Comment],
 });

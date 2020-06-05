@@ -23,7 +23,7 @@ app.use(bodyParser({ extended: false }));
 
 
 
-sequelize.sync(/*{ force: true }*/)
+sequelize.sync({ force: true })
     .then(() => {
 
         const server = app.listen(port, () => {

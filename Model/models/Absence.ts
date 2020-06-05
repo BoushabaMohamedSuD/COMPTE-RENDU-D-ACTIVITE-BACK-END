@@ -54,8 +54,8 @@ export class Absence extends Model<Absence> {
 
 
 
-    @HasMany(() => User, 'AbsenceId')
-    users?: User[];
+    @ForeignKey(() => User)
+    UserId!: number;
 
 
 

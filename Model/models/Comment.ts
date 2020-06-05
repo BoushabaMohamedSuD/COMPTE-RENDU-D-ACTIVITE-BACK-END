@@ -1,3 +1,4 @@
+import { User } from './User';
 
 import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasMany, ForeignKey, AllowNull, Unique, NotNull, Default, HasOne, BelongsTo } from "sequelize-typescript";
 
@@ -12,6 +13,20 @@ import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasM
 export class Comment extends Model<Comment> {
 
 
+    @Column
+    comment!: string;
+
+
+
+    @AllowNull(false)
+    @Column
+    Day!: Number;
+
+    @AllowNull(false)
+    @Column
+    Year!: Number;
+
+
 
     @CreatedAt
     @Column
@@ -21,6 +36,10 @@ export class Comment extends Model<Comment> {
     @Column
     UpdatedAt!: Date;
 
+
+
+    @ForeignKey(() => User)
+    UserId!: number;
 
 
 

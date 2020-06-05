@@ -44,9 +44,8 @@ export class Presence extends Model<Presence> {
 
 
 
-    @HasMany(() => User, 'PresenceId')
-    users?: User[];
-
+    @ForeignKey(() => User)
+    UserId!: number;
 
 
 
