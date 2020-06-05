@@ -2,9 +2,9 @@ import { Test } from './../../Responsibilities/Elements/Test/Test';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
 
 import { StrategiesHolder } from './../holders/StrategiesHolder';
-export class UplaodFile implements StrategiesHolder {
+export class TestStrategy implements StrategiesHolder {
     private chaine!: ResponsibilitiesHolder;
-    private event: any;
+    private req: any;
     private data: {
         request: {
 
@@ -17,8 +17,8 @@ export class UplaodFile implements StrategiesHolder {
         }
 
     };
-    constructor(event: any) {
-        this.event = event;
+    constructor(req: any) {
+        this.req = req;
         this.data = {
             request: {
 
@@ -50,6 +50,7 @@ export class UplaodFile implements StrategiesHolder {
                     //resp true or false
                     if (resp) {
                         //if the response is true we resolve data
+                        console.log(this.data);
                         resolve(this.data);
                     } else {
                         // if not some of resp fails
@@ -66,13 +67,13 @@ export class UplaodFile implements StrategiesHolder {
     };
 
     private treatment(): void {
-        let body = JSON.parse(this.event.body);
-        /*this.data.request.email = this.event.requestContext.authorizer.claims.email;
-        //this.data.request.email = "nodejs1998yz@gmail.com"
-        this.data.request.key = body.key;
-        this.data.request.folder = body.folder;
-        this.data.request.fileSize = body.fileSize;
-        this.data.request.type = body.type;*/
+        const bodey = JSON.stringify(this.req.body)
+        const headers = JSON.stringify(this.req.headers)
+        this.data.request = {
+            ...this.data.request,
+            bodey,
+            headers
+        }
         console.log(this.data);
 
     }
