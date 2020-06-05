@@ -10,6 +10,9 @@ const app = express();
 const port = Port.getInstance().getPort();
 
 
+const RouterTest = require('./Router/Test').router;
+
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Expose-Headers", "Username,Authorization,authorization,PictureData");
@@ -20,10 +23,12 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser({ extended: false }));
 
+app.use('/Test', RouterTest);
 
 
 
-sequelize.sync({ force: true })
+
+sequelize.sync(/*{ force: true }*/)
     .then(() => {
 
         const server = app.listen(port, () => {
