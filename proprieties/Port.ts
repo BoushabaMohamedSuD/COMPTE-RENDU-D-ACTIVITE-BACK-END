@@ -1,6 +1,6 @@
 export class Port {
     private static Instance: Port;
-    private port: any;
+    private port: Number;
 
 
 
