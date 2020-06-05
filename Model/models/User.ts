@@ -26,7 +26,7 @@ export class User extends Model<User> {
 
     @AllowNull(false)
     @Column
-    password!: string;
+    Password!: string;
 
     @AllowNull(false)
     @Column
