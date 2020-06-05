@@ -1,18 +1,14 @@
 
 import express from 'express';
 import bodyParser from 'body-parser';
+import { Port } from './proprieties/Port';
 
 
 const app = express();
-//const five = require("johnny-five");
+
+const port = Port.getInstance().getPort();
 
 
-//const board = new five.Board();
-
-
-
-
-//initializing the configuration
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Expose-Headers", "Username,Authorization,authorization,PictureData");
@@ -23,6 +19,6 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser({ extended: false }));
 
-const server = app.listen(4000, () => {
-    console.log("server Listening in port : ");
+const server = app.listen(port, () => {
+    console.log("server Listening in port : " + port);
 });
