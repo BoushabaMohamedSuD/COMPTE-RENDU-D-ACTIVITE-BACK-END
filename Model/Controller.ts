@@ -1,3 +1,4 @@
+import { User } from './models/User';
 import { DB } from './../proprieties/DB';
 
 export { };
@@ -13,5 +14,5 @@ export const sequelize = new Sequelize({
 
 
 
-    models: [],
+    models: [User],
 });

@@ -18,8 +18,8 @@ export class DB {
 
     private constructor() {
         this.database = 'CRA';
-        this.username = 'root';
-        this.password = 'Mysql2016';
+        this.username = 'Iot';
+        this.password = 'Iot';
         this.dialect = "mysql";
         this.host = 'localhost';
 

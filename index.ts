@@ -2,6 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { Port } from './proprieties/Port';
+import { sequelize } from './Model/Controller';
 
 
 const app = express();
@@ -19,6 +20,13 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser({ extended: false }));
 
-const server = app.listen(port, () => {
-    console.log("server Listening in port : " + port);
-});
+sequelize.sync(/*{ force: true }*/)
+    .then(() => {
+
+        const server = app.listen(port, () => {
+            console.log("server Listening in port : " + port);
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    })
