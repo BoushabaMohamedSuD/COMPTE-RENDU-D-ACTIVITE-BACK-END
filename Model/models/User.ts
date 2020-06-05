@@ -1,3 +1,6 @@
+import { Comment } from './Comment';
+import { Absence } from './Absence';
+import { Presence } from './Presence';
 
 import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasMany, ForeignKey, AllowNull, Unique, NotNull, Default, HasOne, BelongsTo } from "sequelize-typescript";
 
@@ -49,11 +52,16 @@ export class User extends Model<User> {
     UpdatedAt!: Date;
 
 
-    /* @ForeignKey(() => RasberySql)
-     RasberyId!: number;
- 
-     @BelongsTo(() => RasberySql)
-     RasberyHolder?: RasberySql;*/
+    @ForeignKey(() => Presence)
+    PresenceId!: number;
+    @ForeignKey(() => Absence)
+    AbsenceId!: number;
+    @ForeignKey(() => Comment)
+    CommentId!: number;
+
+
+    /*@BelongsTo(() => RasberySql)
+    RasberyHolder?: RasberySql;*/
 
 
 }

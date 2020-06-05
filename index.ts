@@ -20,6 +20,9 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser({ extended: false }));
 
+
+
+
 sequelize.sync(/*{ force: true }*/)
     .then(() => {
 

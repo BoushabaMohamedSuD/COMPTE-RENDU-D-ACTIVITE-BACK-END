@@ -1,3 +1,4 @@
+import { User } from './User';
 
 import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasMany, ForeignKey, AllowNull, Unique, NotNull, Default, HasOne, BelongsTo } from "sequelize-typescript";
 
@@ -11,6 +12,26 @@ import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasM
 @Table
 export class Presence extends Model<Presence> {
 
+    @AllowNull(false)
+    @Column
+    Mission!: boolean;
+
+    @AllowNull(false)
+    @Column
+    Format!: boolean;
+
+    @AllowNull(false)
+    @Column
+    Inter!: boolean;
+
+
+    @AllowNull(false)
+    @Column
+    Day!: Number;
+
+    @AllowNull(false)
+    @Column
+    Year!: Number;
 
 
     @CreatedAt
@@ -20,6 +41,11 @@ export class Presence extends Model<Presence> {
     @UpdatedAt
     @Column
     UpdatedAt!: Date;
+
+
+
+    @HasMany(() => User, 'PresenceId')
+    users?: User[];
 
 
 
