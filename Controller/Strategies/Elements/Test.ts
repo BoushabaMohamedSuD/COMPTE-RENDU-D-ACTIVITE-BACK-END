@@ -1,13 +1,15 @@
+import { Test } from './../../Responsibilities/Elements/Test/Test';
+import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
 
 import { StrategiesHolder } from './../holders/StrategiesHolder';
 export class UplaodFile implements StrategiesHolder {
-    // private chaine!: ResponsibilitiesHolder;
+    private chaine!: ResponsibilitiesHolder;
     private event: any;
     private data: {
         request: {
 
         },
-        data: {
+        elements: {
 
         },
         response: {
@@ -21,7 +23,7 @@ export class UplaodFile implements StrategiesHolder {
             request: {
 
             },
-            data: {
+            elements: {
 
             },
             response: {
@@ -33,19 +35,22 @@ export class UplaodFile implements StrategiesHolder {
         this.treatment();
 
 
+        this.chaine = new Test(this.data);
+
+
 
 
     }
 
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
-            /*this.chaine
+            this.chaine
                 .process()
                 .then((resp) => {
                     //resp true or false
                     if (resp) {
                         //if the response is true we resolve data
-                        resolve(this.data.response);
+                        resolve(this.data);
                     } else {
                         // if not some of resp fails
                         reject("some of respo fails");
@@ -55,7 +60,7 @@ export class UplaodFile implements StrategiesHolder {
                 .catch(err => {
                     //some of respo reject an error
                     reject(err);
-                });*/
+                });
 
         })
     };
