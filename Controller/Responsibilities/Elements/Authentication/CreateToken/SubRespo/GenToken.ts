@@ -43,6 +43,11 @@ export class GenToken implements ResponsibilitiesHolder {
 
             console.log("Generate Token");
 
+            this.data.response = {
+                ...this.data.response,
+                Token: "456fd465sdfjzjds"
+            }
+
 
             if (this.Nextchaine != null) {
                 console.log('going to next chaine');

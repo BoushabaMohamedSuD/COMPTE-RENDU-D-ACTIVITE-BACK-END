@@ -1,8 +1,10 @@
+import { GenToken } from './SubRespo/GenToken';
+import { CheckTokenDB } from './SubRespo/CheckTokenDB';
 import { SubRespoHolder } from './../../../Holders/SubRespoHolder';
 import { ResponsibilitiesHolder } from './../../../Holders/ResponsibilitiesHolder';
 import { resolve } from 'bluebird';
 
-export class Test implements ResponsibilitiesHolder {
+export class CreateToken implements ResponsibilitiesHolder {
 
     private Nextchaine!: ResponsibilitiesHolder;
     //private SubRespo!: SubRespoHolder;
@@ -51,7 +53,11 @@ export class Test implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            this.subProcess([])
+            this.subProcess([
+                new CheckTokenDB(this.data),
+                new GenToken(this.data)
+
+            ])
                 .then((res) => {
                     if (res) {
                         if (this.Nextchaine != null) {

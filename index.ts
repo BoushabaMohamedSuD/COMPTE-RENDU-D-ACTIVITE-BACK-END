@@ -12,6 +12,7 @@ const port = Port.getInstance().getPort();
 
 
 const RouterTest = require('./Router/Test').router;
+const RouterSignIn = require('./Router/Authentication').router;
 
 
 app.use(function (req, res, next) {
@@ -24,6 +25,8 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser({ extended: false }));
 
+
+app.use(RouterSignIn);
 app.use('/Test', RouterTest);
 
 

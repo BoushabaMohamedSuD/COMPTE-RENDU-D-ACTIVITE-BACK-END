@@ -43,6 +43,11 @@ export class CheckTokenDB implements ResponsibilitiesHolder {
 
             console.log("Check Token DB");
 
+            this.data.response = {
+                ...this.data.response,
+                checkToken: "Ok"
+            }
+
 
             if (this.Nextchaine != null) {
                 console.log('going to next chaine');
