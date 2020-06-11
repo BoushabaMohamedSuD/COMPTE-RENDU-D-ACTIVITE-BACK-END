@@ -13,3 +13,8 @@ USE 'Iot';
 
 CREATE DATABASE  IF NOT EXISTS CRA;
 USE 'CRA';
+
+
+
+/////////
+all the responce on the responsabilites should be treu if evryting is  OK

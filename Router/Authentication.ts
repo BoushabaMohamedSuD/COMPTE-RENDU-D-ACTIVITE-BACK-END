@@ -25,7 +25,7 @@ router.post('/SignIn', (req, res) => {
 
         })
         .catch((err) => {
-            res.status(400).send("Sign failed");
+            res.status(400).send("Sign failed : " + err);
         });
 
 

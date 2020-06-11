@@ -35,7 +35,7 @@ export class SignIn implements StrategiesHolder {
         this.treatment();
 
 
-        this.chaine = new Test(this.data);
+        //this.chaine = new Test(this.data);
 
 
 

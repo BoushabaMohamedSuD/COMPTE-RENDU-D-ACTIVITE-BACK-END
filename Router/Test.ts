@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
 
         })
         .catch((err) => {
-            res.status(400).send("Test failed");
+            res.status(400).send("Test failed : " + err);
         });
 
 
