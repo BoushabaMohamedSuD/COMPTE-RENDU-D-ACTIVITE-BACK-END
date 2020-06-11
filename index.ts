@@ -34,6 +34,7 @@ sequelize.sync(/*{ force: true }*/)
         /*User.bulkCreate([{
             FirstName: "Mohamed",
             LastName: "Boushaba",
+            Email: "med1998yz@gmail.com",
             Password: "1234",
             BusinessCode: "15",
             Authority: "admin"
@@ -41,6 +42,7 @@ sequelize.sync(/*{ force: true }*/)
         }, {
             FirstName: "Jlil",
             LastName: "Tibari",
+            Email: "Tibari@gmail.com",
             Password: "0123",
             BusinessCode: "12",
             Authority: "admin"

@@ -1,3 +1,4 @@
+import { Token } from './Token';
 import { Comment } from './Comment';
 import { Absence } from './Absence';
 import { Presence } from './Presence';
@@ -18,6 +19,17 @@ export class User extends Model<User> {
     @AllowNull(false)
     @Unique
     @Column
+    Email!: string;
+
+    @AllowNull(false)
+    @Unique
+    @Column
+    BusinessCode!: string;
+
+
+
+    @AllowNull(false)
+    @Column
     FirstName!: string;
 
     @AllowNull(false)
@@ -28,9 +40,6 @@ export class User extends Model<User> {
     @Column
     Password!: string;
 
-    @AllowNull(false)
-    @Column
-    BusinessCode!: string;
 
 
     @AllowNull(false)
@@ -53,6 +62,9 @@ export class User extends Model<User> {
 
 
 
+
+    @HasOne(() => Token, 'UserId')
+    tokens?: Token;
 
 
     @HasMany(() => Presence, 'UserId')

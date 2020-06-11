@@ -1,3 +1,4 @@
+import { Token } from './models/Token';
 import { Comment } from './models/Comment';
 import { Absence } from './models/Absence';
 import { Presence } from './models/Presence';
@@ -17,5 +18,5 @@ export const sequelize = new Sequelize({
 
 
 
-    models: [User, Presence, Absence, Comment],
+    models: [User, Presence, Absence, Comment, Token],
 });
