@@ -1,3 +1,4 @@
+import { SubRespoHolder } from './../../../../Holders/SubRespoHolder';
 import { User } from './../../../../../../Model/models/User';
 import { Token } from './../../../../../../Model/models/Token';
 import { JWT } from './../../../../../../proprieties/JWT';
@@ -5,9 +6,10 @@ import { ResponsibilitiesHolder } from './../../../../Holders/ResponsibilitiesHo
 import jwt from 'jsonwebtoken';
 import { userInfo } from 'os';
 
-export class GenToken implements ResponsibilitiesHolder {
+export class GenToken implements SubRespoHolder {
 
-    private Nextchaine!: ResponsibilitiesHolder;
+
+    private Nextchaine!: SubRespoHolder;
     private data: {
         request: any,
         elements: any,
@@ -26,7 +28,7 @@ export class GenToken implements ResponsibilitiesHolder {
         this.data = data;
     }
 
-    public setNextChaine(chaine: ResponsibilitiesHolder): ResponsibilitiesHolder {
+    public setNextChaine(chaine: SubRespoHolder): SubRespoHolder {
         this.Nextchaine = chaine;
         return this.Nextchaine;
     }

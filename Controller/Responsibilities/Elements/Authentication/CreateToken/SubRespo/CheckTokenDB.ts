@@ -1,3 +1,4 @@
+import { SubRespoHolder } from './../../../../Holders/SubRespoHolder';
 import { User } from './../../../../../../Model/models/User';
 import { Model } from 'sequelize-typescript';
 import { JWT } from './../../../../../../proprieties/JWT';
@@ -7,9 +8,9 @@ import { ResponsibilitiesHolder } from './../../../../Holders/ResponsibilitiesHo
 import { or } from 'sequelize/types';
 import jwt from 'jsonwebtoken';
 
-export class CheckTokenDB implements ResponsibilitiesHolder {
+export class CheckTokenDB implements SubRespoHolder {
 
-    private Nextchaine!: ResponsibilitiesHolder;
+    private Nextchaine!: SubRespoHolder;
     private data: {
         request: any,
         elements: any,
@@ -28,7 +29,7 @@ export class CheckTokenDB implements ResponsibilitiesHolder {
         this.data = data;
     }
 
-    public setNextChaine(chaine: ResponsibilitiesHolder): ResponsibilitiesHolder {
+    public setNextChaine(chaine: SubRespoHolder): SubRespoHolder {
         this.Nextchaine = chaine;
         return this.Nextchaine;
     }
