@@ -5,16 +5,11 @@ import { StrategiesHolder } from './../holders/StrategiesHolder';
 export class TestStrategy implements StrategiesHolder {
     private chaine!: ResponsibilitiesHolder;
     private req: any;
+
     private data: {
-        request: {
-
-        },
-        elements: {
-
-        },
-        response: {
-
-        }
+        request: any,
+        elements: any,
+        response: any
 
     };
     constructor(req: any) {
@@ -67,8 +62,8 @@ export class TestStrategy implements StrategiesHolder {
     };
 
     private treatment(): void {
-        const bodey = JSON.stringify(this.req.body)
-        const headers = JSON.stringify(this.req.headers)
+        const bodey = this.req.body
+        const headers = this.req.headers
         this.data.request = {
             ...this.data.request,
             bodey,

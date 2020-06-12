@@ -10,30 +10,17 @@ export class CreateToken implements ResponsibilitiesHolder {
     //private SubRespo!: SubRespoHolder;
 
     private data: {
-        request: {
-
-        },
-        elements: {
-
-        },
-        response: {
-
-        }
+        request: any,
+        elements: any,
+        response: any
 
     };;
 
     constructor(
         data: {
-            request: {
-
-            },
-            elements: {
-
-            },
-            response: {
-
-            }
-
+            request: any,
+            elements: any,
+            response: any
         }
     ) {
         this.data = data;

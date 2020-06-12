@@ -4,29 +4,17 @@ export class GenToken implements ResponsibilitiesHolder {
 
     private Nextchaine!: ResponsibilitiesHolder;
     private data: {
-        request: {
-
-        },
-        elements: {
-
-        },
-        response: {
-
-        }
+        request: any,
+        elements: any,
+        response: any
 
     };;
 
     constructor(
         data: {
-            request: {
-
-            },
-            elements: {
-
-            },
-            response: {
-
-            }
+            request: any,
+            elements: any,
+            response: any
 
         }
     ) {

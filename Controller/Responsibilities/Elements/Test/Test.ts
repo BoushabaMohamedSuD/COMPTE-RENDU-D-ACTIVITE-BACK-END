@@ -3,30 +3,17 @@ export class Test implements ResponsibilitiesHolder {
 
     private Nextchaine!: ResponsibilitiesHolder;
     private data: {
-        request: {
-
-        },
-        elements: {
-
-        },
-        response: {
-
-        }
+        request: any,
+        elements: any,
+        response: any
 
     };;
 
     constructor(
         data: {
-            request: {
-
-            },
-            elements: {
-
-            },
-            response: {
-
-            }
-
+            request: any[],
+            elements: any[],
+            response: any[]
         }
     ) {
         this.data = data;
@@ -40,6 +27,13 @@ export class Test implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
             // code here
+
+            console.log("ùùùùùùùùùùùùùùùùùùùù")
+
+            // console.log(this.data.request)
+            console.log(this.data.request.bodey.Name)
+
+            console.log("ùùùùùùùùùùùùùùùùùùùù")
 
             this.data.elements = {
                 ...this.data.elements,

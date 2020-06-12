@@ -9,6 +9,16 @@ const router = express.Router();
 
 //for testing 
 
+
+// the request body should vbe as 
+
+/*
+{
+    email:"med1998yz@gmail.com"  OR    bcode:"15623"
+    password:"********"
+}
+*/
+
 router.post('/SignIn', (req, res) => {
     console.log("Test Strategy");
 

@@ -9,15 +9,9 @@ export class SignIn implements StrategiesHolder {
     private chaine!: ResponsibilitiesHolder;
     private req: any;
     private data: {
-        request: {
-
-        },
-        elements: {
-
-        },
-        response: {
-
-        }
+        request: any,
+        elements: any,
+        response: any
 
     };
     constructor(req: any) {
