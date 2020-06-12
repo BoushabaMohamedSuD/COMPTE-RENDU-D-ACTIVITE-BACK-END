@@ -38,6 +38,8 @@ export class VUA_ADMIN_BCODE implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
+            console.log("VUA ADMIN BCODE");
+
             User.findOne({ where: { Email: this.data.elements.bcode } })
                 .then((user) => {
 

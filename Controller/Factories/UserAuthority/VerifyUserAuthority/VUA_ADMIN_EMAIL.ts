@@ -38,6 +38,9 @@ export class VUA_ADMIN_EMAIL implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
+            console.log("VUA ADMIN EMAIL");
+
+
             User.findOne({ where: { Email: this.data.elements.email } })
                 .then((user) => {
 

@@ -1,3 +1,4 @@
+import { VerifyUserAuthority } from './../../Responsibilities/Elements/Common/UserAuthority/VerifyUserAuthority';
 import { TokenValidation } from './../../Responsibilities/Elements/Authorization/TokenValidation';
 import { SetUserActivity } from '../../Responsibilities/Elements/Common/UserActivity/SetUserActivity';
 import { CheckTokenDB } from './../../Responsibilities/Elements/Authentication/CreateToken/SubRespo/CheckTokenDB';
@@ -35,6 +36,9 @@ export class CreateUser implements StrategiesHolder {
         this.treatment();
 
         this.chaine = new TokenValidation(this.data);
+
+        this.chaine
+            .setNextChaine(VerifyUserAuthority.getFactorie(this.data, ['admin', 'email']))
 
 
 
