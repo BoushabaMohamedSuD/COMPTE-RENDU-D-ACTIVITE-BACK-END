@@ -56,7 +56,11 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
                             isActive: user.IsActive,
                             firstname: user.FirstName,
                             lastname: user.LastName,
-                            bcode: user.BusinessCode
+                            bcode: user.BusinessCode,
+
+                            model: {
+                                user: user
+                            }
 
                         }
 

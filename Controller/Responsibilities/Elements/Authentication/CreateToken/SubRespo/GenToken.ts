@@ -1,7 +1,9 @@
+import { User } from './../../../../../../Model/models/User';
 import { Token } from './../../../../../../Model/models/Token';
 import { JWT } from './../../../../../../proprieties/JWT';
 import { ResponsibilitiesHolder } from './../../../../Holders/ResponsibilitiesHolder';
 import jwt from 'jsonwebtoken';
+import { userInfo } from 'os';
 
 export class GenToken implements ResponsibilitiesHolder {
 
@@ -52,8 +54,13 @@ export class GenToken implements ResponsibilitiesHolder {
                             token: resToken,
                         }
 
+
                         Token.create({ Token: resToken })
-                            .then((resp) => {
+                            .then((crToken) => {
+
+                                this.data.elements.model.user
+                                    .$set("token", crToken);
+
                                 if (this.Nextchaine != null) {
                                     console.log('going to next chaine');
                                     this.Nextchaine.process()

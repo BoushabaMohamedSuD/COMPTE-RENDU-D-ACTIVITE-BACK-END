@@ -68,6 +68,9 @@ export class CheckTokenDB implements ResponsibilitiesHolder {
                     token: oriToken
                 }
 
+                console.log('user has already a token');
+                resolve(true);
+
             }
 
 
