@@ -58,8 +58,18 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
                             lastname: user.LastName,
                             bcode: user.BusinessCode
 
-
                         }
+
+                        this.data.response = {
+                            id: user.id,
+                            email: user.Email,
+                            authority: user.Authority,
+                            isActive: user.IsActive,
+                            firstname: user.FirstName,
+                            lastname: user.LastName,
+                            bcode: user.BusinessCode
+                        }
+
                         user.$get('token')
                             .then(token => {
                                 if (token != null) {

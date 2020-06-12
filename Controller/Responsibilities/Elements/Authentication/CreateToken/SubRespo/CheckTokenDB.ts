@@ -1,4 +1,6 @@
+import { Token } from './../../../../../../Model/models/Token';
 import { ResponsibilitiesHolder } from './../../../../Holders/ResponsibilitiesHolder';
+import { or } from 'sequelize/types';
 
 export class CheckTokenDB implements ResponsibilitiesHolder {
 
@@ -31,33 +33,44 @@ export class CheckTokenDB implements ResponsibilitiesHolder {
 
             console.log("Check Token DB");
 
-            this.data.response = {
-                ...this.data.response,
-                checkToken: "Ok"
-            }
+            let oriToken = this.data.elements.token;
+            if (oriToken == null || oriToken == undefined || oriToken == "") {
+
+                console.log("user has not token yet");
+                if (this.Nextchaine != null) {
+                    console.log('going to next chaine');
+                    this.Nextchaine.process()
+                        .then((resp) => {
+                            // resp is her false or true
+                            if (resp) {
+                                resolve(resp);
+                            } else {
+                                reject(resp);
+                            }
+
+                        })
+                        .catch((err) => {
+                            // console.log(err);
+                            //console.log('Error');
+                            reject(err);
+                        });
+                } else {
+                    console.log('this is the end of the chaine');
+                    resolve(true);
+                }
 
 
-            if (this.Nextchaine != null) {
-                console.log('going to next chaine');
-                this.Nextchaine.process()
-                    .then((resp) => {
-                        // resp is her false or true
-                        if (resp) {
-                            resolve(resp);
-                        } else {
-                            reject(resp);
-                        }
 
-                    })
-                    .catch((err) => {
-                        // console.log(err);
-                        //console.log('Error');
-                        reject(err);
-                    });
             } else {
-                console.log('this is the end of the chaine');
-                resolve(true);
+
+                this.data.response = {
+                    ...this.data.elements,
+                    token: oriToken
+                }
+
             }
+
+
 
         })
     };
