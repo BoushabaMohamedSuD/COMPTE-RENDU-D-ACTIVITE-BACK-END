@@ -1,4 +1,5 @@
-import { SetUserActivity } from './../../Responsibilities/Elements/Common/SetUserActivity';
+import { TokenValidation } from './../../Responsibilities/Elements/Authorization/TokenValidation';
+import { SetUserActivity } from '../../Responsibilities/Elements/Common/UserActivity/SetUserActivity';
 import { CheckTokenDB } from './../../Responsibilities/Elements/Authentication/CreateToken/SubRespo/CheckTokenDB';
 import { CheckPassword } from './../../Responsibilities/Elements/Authentication/CheckPassword';
 import { FetchUserInfo } from './../../Responsibilities/Elements/FetchData/FetchUserInfo';
@@ -32,6 +33,8 @@ export class CreateUser implements StrategiesHolder {
 
 
         this.treatment();
+
+        this.chaine = new TokenValidation(this.data);
 
 
 

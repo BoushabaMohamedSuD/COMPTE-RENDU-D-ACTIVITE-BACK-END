@@ -1,9 +1,9 @@
-import { SUA_FALSE_BCODE } from './../../../Factories/SetUserActivity/SUA_FALSE_BCODE';
-import { SUA_TRUE_BCODE } from './../../../Factories/SetUserActivity/SUA_TRUE_BCODE';
-import { SUA_FALSE_EMAIL } from './../../../Factories/SetUserActivity/SUA_FALSE_EMAIL';
-import { SUA_TRUE_EMAIL } from './../../../Factories/SetUserActivity/SUA_TRUE_EMAIL';
+import { SUA_FALSE_BCODE } from '../../../../Factories/SetUserActivity/SUA_FALSE_BCODE';
+import { SUA_TRUE_BCODE } from '../../../../Factories/SetUserActivity/SUA_TRUE_BCODE';
+import { SUA_FALSE_EMAIL } from '../../../../Factories/SetUserActivity/SUA_FALSE_EMAIL';
+import { SUA_TRUE_EMAIL } from '../../../../Factories/SetUserActivity/SUA_TRUE_EMAIL';
 
-import { ResponsibilitiesHolder } from './../../Holders/ResponsibilitiesHolder';
+import { ResponsibilitiesHolder } from '../../../Holders/ResponsibilitiesHolder';
 
 export class SetUserActivity {
 

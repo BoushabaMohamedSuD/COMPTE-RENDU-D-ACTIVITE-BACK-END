@@ -1,4 +1,4 @@
-import { SetUserActivity } from './../../Responsibilities/Elements/Common/SetUserActivity';
+import { SetUserActivity } from '../../Responsibilities/Elements/Common/UserActivity/SetUserActivity';
 import { CheckTokenDB } from './../../Responsibilities/Elements/Authentication/CreateToken/SubRespo/CheckTokenDB';
 import { CheckPassword } from './../../Responsibilities/Elements/Authentication/CheckPassword';
 import { FetchUserInfo } from './../../Responsibilities/Elements/FetchData/FetchUserInfo';

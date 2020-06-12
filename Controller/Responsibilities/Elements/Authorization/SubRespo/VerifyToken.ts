@@ -64,7 +64,7 @@ export class VerifyToken implements SubRespoHolder {
                         }
 
                     } else {
-                        const errs = "ERorr on authorization";
+                        const errs = "ERorr on authorization , chack validation with user data and request failed";
                         reject(errs);
 
                     }
@@ -89,6 +89,8 @@ export class VerifyToken implements SubRespoHolder {
         const firstname = this.data.request.bodey.firstname;
         const email = this.data.request.bodey.email;
         const bcode = this.data.request.bodey.bcode;
+
+        // console.log(userdata);
 
         if (userdata.lastname != lastname) {
             return false;
