@@ -1,3 +1,6 @@
+import { CreateToken } from './../Authentication/CreateToken/CreateToken';
+import { CheckTokenOnDB } from './SubRespo/CheckTokenOnDB';
+import { VerifyToken } from './SubRespo/VerifyToken';
 import { SubRespoHolder } from './../../Holders/SubRespoHolder';
 import { ResponsibilitiesHolder } from './../../Holders/ResponsibilitiesHolder';
 
@@ -37,8 +40,10 @@ export class TokenValidation implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            this.subProcess([
 
+            this.subProcess([
+                new VerifyToken(this.data),
+                new CheckTokenOnDB(this.data),
 
             ])
                 .then((res) => {
