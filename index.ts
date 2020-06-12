@@ -34,23 +34,23 @@ app.use('/Test', RouterTest);
 
 sequelize.sync(/*{ force: true }*/)
     .then(() => {
-        /*User.bulkCreate([{
-            FirstName: "Mohamed",
-            LastName: "Boushaba",
-            Email: "med1998yz@gmail.com",
-            Password: "1234",
-            BusinessCode: "15",
-            Authority: "admin"
-
-        }, {
-            FirstName: "Jlil",
-            LastName: "Tibari",
-            Email: "Tibari@gmail.com",
-            Password: "0123",
-            BusinessCode: "12",
-            Authority: "admin"
-
-        }]).then(() => console.log("user has been created"))*/
+        /*  User.bulkCreate([{
+              FirstName: "Mohamed",
+              LastName: "Boushaba",
+              Email: "med1998yz@gmail.com",
+              Password: "1234",
+              BusinessCode: "15",
+              Authority: "admin"
+  
+          }, {
+              FirstName: "Jlil",
+              LastName: "Tibari",
+              Email: "Tibari@gmail.com",
+              Password: "0123",
+              BusinessCode: "12",
+              Authority: "admin"
+  
+          }]).then(() => console.log("user has been created"))*/
 
         const server = app.listen(port, () => {
             console.log("server Listening in port : " + port);

@@ -58,6 +58,8 @@ export class GenToken implements ResponsibilitiesHolder {
                         Token.create({ Token: resToken })
                             .then((crToken) => {
 
+
+
                                 this.data.elements.model.user
                                     .$set("token", crToken);
 

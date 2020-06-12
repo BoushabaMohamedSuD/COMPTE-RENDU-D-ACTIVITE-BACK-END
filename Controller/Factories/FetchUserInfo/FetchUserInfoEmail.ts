@@ -78,9 +78,14 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
                             .then(token => {
                                 if (token != null) {
 
+                                    this.data.elements.model = {
+                                        ...this.data.elements.model,
+                                        token: token
+                                    }
+
                                     this.data.elements = {
                                         ...this.data.elements,
-                                        token: token
+                                        token: token.Token
                                     }
 
 

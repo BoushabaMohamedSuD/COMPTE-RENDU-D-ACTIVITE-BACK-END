@@ -8,6 +8,7 @@ export class JWT {
     private constructor() {
         this.password = "craTestJwt";
         this.ExpTime = 60 * 60 * 24 * 12;
+        //this.ExpTime = 10;
 
     }
 
