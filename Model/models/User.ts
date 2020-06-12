@@ -64,7 +64,7 @@ export class User extends Model<User> {
 
 
     @HasOne(() => Token, 'UserId')
-    tokens?: Token;
+    token?: Token;
 
 
     @HasMany(() => Presence, 'UserId')

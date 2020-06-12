@@ -32,9 +32,9 @@ app.use('/Test', RouterTest);
 
 
 
-sequelize.sync(/*{ force: true }*/)
+sequelize.sync({ force: true })
     .then(() => {
-        /*User.bulkCreate([{
+        User.bulkCreate([{
             FirstName: "Mohamed",
             LastName: "Boushaba",
             Email: "med1998yz@gmail.com",
@@ -50,7 +50,7 @@ sequelize.sync(/*{ force: true }*/)
             BusinessCode: "12",
             Authority: "admin"
 
-        }]).then(() => console.log("user has been created"))*/
+        }]).then(() => console.log("user has been created"))
 
         const server = app.listen(port, () => {
             console.log("server Listening in port : " + port);

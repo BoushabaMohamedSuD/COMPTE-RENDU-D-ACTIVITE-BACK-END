@@ -60,29 +60,52 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
 
 
                         }
+                        user.$get('token')
+                            .then(token => {
+                                if (token != null) {
 
-
-                        if (this.Nextchaine != null) {
-                            console.log('going to next chaine');
-                            this.Nextchaine.process()
-                                .then((resp: any) => {
-                                    // resp is her false or true
-                                    if (resp) {
-                                        resolve(resp);
-                                    } else {
-                                        reject(resp);
+                                    this.data.elements = {
+                                        ...this.data.elements,
+                                        token: token
                                     }
 
-                                })
-                                .catch((err: any) => {
-                                    // console.log(err);
-                                    //console.log('Error');
-                                    reject(err);
-                                });
-                        } else {
-                            console.log('this is the end of the chaine');
-                            resolve(true);
-                        }
+
+                                } else {
+
+                                    console.log("user have no token yet");
+
+                                }
+
+                                if (this.Nextchaine != null) {
+                                    console.log('going to next chaine');
+                                    this.Nextchaine.process()
+                                        .then((resp: any) => {
+                                            // resp is her false or true
+                                            if (resp) {
+                                                resolve(resp);
+                                            } else {
+                                                reject(resp);
+                                            }
+
+                                        })
+                                        .catch((err: any) => {
+                                            // console.log(err);
+                                            //console.log('Error');
+                                            reject(err);
+                                        });
+                                } else {
+                                    console.log('this is the end of the chaine');
+                                    resolve(true);
+                                }
+
+
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                                reject(err);
+                            })
+
+
 
                     } else {
                         let err = "user is null";
