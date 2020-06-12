@@ -1,3 +1,5 @@
+import { Token } from './../../../../../../Model/models/Token';
+import { JWT } from './../../../../../../proprieties/JWT';
 import { ResponsibilitiesHolder } from './../../../../Holders/ResponsibilitiesHolder';
 import jwt from 'jsonwebtoken';
 
@@ -38,42 +40,55 @@ export class GenToken implements ResponsibilitiesHolder {
                 lastname: this.data.elements.lastname,
                 bcode: this.data.elements.bcode,
                 email: this.data.elements.email
-            }, 'test', { expiresIn: 60 * 5 }, (errToken, resToken) => {
+            },
+                JWT.getInstance().getPassword(),
+                { expiresIn: JWT.getInstance().getExpTime() },
+                (errToken, resToken) => {
 
-                if (!errToken) {
+                    if (!errToken) {
 
-                    this.data.response = {
-                        ...this.data.response,
-                        token: resToken,
-                    }
-                    if (this.Nextchaine != null) {
-                        console.log('going to next chaine');
-                        this.Nextchaine.process()
+                        this.data.response = {
+                            ...this.data.response,
+                            token: resToken,
+                        }
+
+                        Token.create({ Token: resToken })
                             .then((resp) => {
-                                // resp is her false or true
-                                if (resp) {
-                                    resolve(resp);
+                                if (this.Nextchaine != null) {
+                                    console.log('going to next chaine');
+                                    this.Nextchaine.process()
+                                        .then((resp) => {
+                                            // resp is her false or true
+                                            if (resp) {
+                                                resolve(resp);
+                                            } else {
+                                                reject(resp);
+                                            }
+
+                                        })
+                                        .catch((err) => {
+                                            // console.log(err);
+                                            //console.log('Error');
+                                            reject(err);
+                                        });
                                 } else {
-                                    reject(resp);
+                                    console.log('this is the end of the chaine');
+                                    resolve(true);
                                 }
+
 
                             })
                             .catch((err) => {
-                                // console.log(err);
-                                //console.log('Error');
+                                console.log(err);
                                 reject(err);
-                            });
+                            })
+
+
                     } else {
-                        console.log('this is the end of the chaine');
-                        resolve(true);
+                        let err = "cannot gen token"
+                        reject(err);
                     }
-
-
-                } else {
-                    let err = "cannot gen token"
-                    reject(err);
-                }
-            });
+                });
 
 
         })

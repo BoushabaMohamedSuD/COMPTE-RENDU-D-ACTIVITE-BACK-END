@@ -16,7 +16,7 @@ export class Token extends Model<Token> {
     @AllowNull(false)
     @Unique
     @Column
-    Tokens!: string;
+    Token!: string;
 
     @CreatedAt
     @Column
