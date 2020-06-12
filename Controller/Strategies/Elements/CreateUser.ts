@@ -7,7 +7,7 @@ import { Test } from './../../Responsibilities/Elements/Test/Test';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
 
 import { StrategiesHolder } from './../holders/StrategiesHolder';
-export class SignIn implements StrategiesHolder {
+export class CreateUser implements StrategiesHolder {
     private chaine!: ResponsibilitiesHolder;
     private req: any;
     private data: {
@@ -34,12 +34,7 @@ export class SignIn implements StrategiesHolder {
         this.treatment();
 
 
-        this.chaine = FetchUserInfo.getFactorie(this.data, 'email');
 
-        this.chaine
-            .setNextChaine(new CheckPassword(this.data))
-            .setNextChaine(new CreateToken(this.data))
-            .setNextChaine(SetUserActivity.getFactorie(this.data, ['email', true]))
 
 
 
@@ -58,17 +53,6 @@ export class SignIn implements StrategiesHolder {
                     if (resp) {
                         //if the response is true we resolve data
 
-                        this.data.response = {
-                            ...this.data.response,
-                            id: this.data.elements.id,
-                            email: this.data.elements.email,
-                            authority: this.data.elements.authority,
-                            firstname: this.data.elements.firstname,
-                            lastname: this.data.elements.lastname,
-                            bcode: this.data.elements.bcode,
-                            isactive: this.data.elements.isactive,
-                            token: this.data.elements.token,
-                        }
                         console.log(this.data);
                         resolve(this.data);
                     } else {
