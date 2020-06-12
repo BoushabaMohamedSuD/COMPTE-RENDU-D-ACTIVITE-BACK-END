@@ -8,7 +8,7 @@ export class GenToken implements ResponsibilitiesHolder {
         elements: any,
         response: any
 
-    };;
+    };
 
     constructor(
         data: {

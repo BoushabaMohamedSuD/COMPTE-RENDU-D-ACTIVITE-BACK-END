@@ -1,3 +1,4 @@
+import { CheckTokenDB } from './../../Responsibilities/Elements/Authentication/CreateToken/SubRespo/CheckTokenDB';
 import { CheckPassword } from './../../Responsibilities/Elements/Authentication/CheckPassword';
 import { FetchUserInfo } from './../../Responsibilities/Elements/FetchData/FetchUserInfo';
 import { CreateToken } from './../../Responsibilities/Elements/Authentication/CreateToken/CreateToken';
@@ -32,9 +33,13 @@ export class SignIn implements StrategiesHolder {
         this.treatment();
 
 
-        this.chaine = FetchUserInfo.setFactorie(this.data, 'email')
+        this.chaine = FetchUserInfo.getFactorie(this.data, 'email');
+
+        this.chaine
             .setNextChaine(new CheckPassword(this.data))
-            .setNextChaine(new CreateToken(this.data));
+            .setNextChaine(new CreateToken(this.data))
+
+
 
 
 
@@ -50,7 +55,7 @@ export class SignIn implements StrategiesHolder {
                     //resp true or false
                     if (resp) {
                         //if the response is true we resolve data
-                        //  console.log(this.data);
+                        console.log(this.data);
                         resolve(this.data);
                     } else {
                         // if not some of resp fails
@@ -67,14 +72,14 @@ export class SignIn implements StrategiesHolder {
     };
 
     private treatment(): void {
-        const bodey = JSON.stringify(this.req.body)
-        const headers = JSON.stringify(this.req.headers)
+        const bodey = this.req.body
+        const headers = this.req.headers
         this.data.request = {
             ...this.data.request,
             bodey,
             headers
         }
-        console.log(this.data);
+        // console.log(this.data);
 
     }
 

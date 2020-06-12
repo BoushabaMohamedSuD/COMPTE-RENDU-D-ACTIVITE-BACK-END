@@ -12,7 +12,7 @@ export class FetchUserInfoBCode implements ResponsibilitiesHolder {
         request: any,
         elements: any,
         response: any
-    };;
+    };
 
     constructor(
         data: {
@@ -38,7 +38,7 @@ export class FetchUserInfoBCode implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            User.findOne({ where: { BusinessCode: "test" } })
+            User.findOne({ where: { BusinessCode: this.data.request.bodey.bcode } })
                 .then(user => {
                     if (user != null) {
 

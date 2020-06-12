@@ -20,7 +20,7 @@ const router = express.Router();
 */
 
 router.post('/SignIn', (req, res) => {
-    console.log("Test Strategy");
+    console.log("SignIn Strategy");
 
     new Context(new SignIn(req))
         .process()

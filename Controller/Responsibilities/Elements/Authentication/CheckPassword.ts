@@ -13,7 +13,7 @@ export class CheckPassword implements ResponsibilitiesHolder {
         elements: any,
         response: any
 
-    };;
+    };
 
     constructor(
         data: {
@@ -40,27 +40,43 @@ export class CheckPassword implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            if (this.Nextchaine != null) {
-                console.log('going to next chaine');
-                this.Nextchaine.process()
-                    .then((resp: any) => {
-                        // resp is her false or true
-                        if (resp) {
-                            resolve(resp);
-                        } else {
-                            reject(resp);
-                        }
+            console.log("check password");
 
-                    })
-                    .catch((err: any) => {
-                        // console.log(err);
-                        //console.log('Error');
-                        reject(err);
-                    });
+            const reqPassword = this.data.request.bodey.password;
+            const oriPassword = this.data.elements.password;
+
+            if (reqPassword == oriPassword) {
+                if (this.Nextchaine != null) {
+                    console.log('going to next chaine');
+                    this.Nextchaine.process()
+                        .then((resp: any) => {
+                            // resp is her false or true
+                            if (resp) {
+                                resolve(resp);
+                            } else {
+                                reject(resp);
+                            }
+
+                        })
+                        .catch((err: any) => {
+                            // console.log(err);
+                            //console.log('Error');
+                            reject(err);
+                        });
+                } else {
+                    console.log('this is the end of the chaine');
+                    resolve(true);
+                }
+
             } else {
-                console.log('this is the end of the chaine');
-                resolve(true);
+
+                const err = "password is incorrect"
+                console.log(err);
+                reject(err);
+
             }
+
+
 
 
 

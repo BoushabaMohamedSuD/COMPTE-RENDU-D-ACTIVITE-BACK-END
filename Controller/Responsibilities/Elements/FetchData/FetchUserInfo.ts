@@ -4,7 +4,7 @@ import { ResponsibilitiesHolder } from './../../Holders/ResponsibilitiesHolder';
 
 export class FetchUserInfo {
 
-    public static setFactorie(data: any, operation: any): ResponsibilitiesHolder {
+    public static getFactorie(data: any, operation: any): ResponsibilitiesHolder {
 
         if (operation == 'email') {
             return new FetchUserInfoEmail(data);

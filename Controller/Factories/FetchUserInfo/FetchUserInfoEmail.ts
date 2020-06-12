@@ -13,7 +13,7 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
         elements: any,
         response: any
 
-    };;
+    };
 
     constructor(
         data: {
@@ -40,11 +40,14 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            User.findOne({ where: { Email: "Test" } })
+            console.log("fetch user by email");
+
+            User.findOne({ where: { Email: this.data.request.bodey.email } })
                 .then(user => {
+                    // console.log(user);
                     if (user != null) {
 
-                        this.data.response = {
+                        this.data.elements = {
                             ...this.data.elements,
                             id: user.id,
                             email: user.Email,

@@ -7,7 +7,7 @@ export class Test implements ResponsibilitiesHolder {
         elements: any,
         response: any
 
-    };;
+    };
 
     constructor(
         data: {

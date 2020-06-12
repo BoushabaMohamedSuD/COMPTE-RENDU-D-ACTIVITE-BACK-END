@@ -14,7 +14,7 @@ export class CreateToken implements ResponsibilitiesHolder {
         elements: any,
         response: any
 
-    };;
+    };
 
     constructor(
         data: {

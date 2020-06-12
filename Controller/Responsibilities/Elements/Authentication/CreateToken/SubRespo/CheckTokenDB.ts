@@ -8,7 +8,7 @@ export class CheckTokenDB implements ResponsibilitiesHolder {
         elements: any,
         response: any
 
-    };;
+    };
 
     constructor(
         data: {
