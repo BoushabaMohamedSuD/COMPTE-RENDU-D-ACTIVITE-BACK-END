@@ -1,9 +1,10 @@
+import { CreateUserByAdmin } from './../../Responsibilities/Elements/CreateUserByAdmin/CreateUserByAdmin';
 import { VerifyUserAuthority } from './../../Responsibilities/Elements/Common/UserAuthority/VerifyUserAuthority';
 import { TokenValidation } from './../../Responsibilities/Elements/Authorization/TokenValidation';
 import { SetUserActivity } from '../../Responsibilities/Elements/Common/UserActivity/SetUserActivity';
 import { CheckTokenDB } from './../../Responsibilities/Elements/Authentication/CreateToken/SubRespo/CheckTokenDB';
 import { CheckPassword } from './../../Responsibilities/Elements/Authentication/CheckPassword';
-import { FetchUserInfo } from './../../Responsibilities/Elements/FetchData/FetchUserInfo';
+import { FetchUserInfo } from '../../Responsibilities/Elements/Common/FetchData/FetchUserInfo';
 import { CreateToken } from './../../Responsibilities/Elements/Authentication/CreateToken/CreateToken';
 import { Test } from './../../Responsibilities/Elements/Test/Test';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
@@ -39,6 +40,7 @@ export class CreateUser implements StrategiesHolder {
 
         this.chaine
             .setNextChaine(VerifyUserAuthority.getFactorie(this.data, ['admin', 'email']))
+            .setNextChaine(new CreateUserByAdmin(this.data))
 
 
 
@@ -103,7 +105,8 @@ export class CreateUser implements StrategiesHolder {
         }
         this.data.elements = {
             ...this.data.elements,
-            reqtoken: (headers.authorization.split(" "))[1]
+            reqtoken: (headers.authorization.split(" "))[1],
+            email: this.data.request.bodey.email
         }
         //console.log(this.data);
 

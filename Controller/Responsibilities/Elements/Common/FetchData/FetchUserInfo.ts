@@ -1,6 +1,6 @@
-import { FetchUserInfoBCode } from './../../../Factories/FetchUserInfo/FetchUserInfoBCode';
-import { FetchUserInfoEmail } from './../../../Factories/FetchUserInfo/FetchUserInfoEmail';
-import { ResponsibilitiesHolder } from './../../Holders/ResponsibilitiesHolder';
+import { FetchUserInfoBCode } from '../../../../Factories/FetchUserInfo/FetchUserInfoBCode';
+import { FetchUserInfoEmail } from '../../../../Factories/FetchUserInfo/FetchUserInfoEmail';
+import { ResponsibilitiesHolder } from '../../../Holders/ResponsibilitiesHolder';
 
 export class FetchUserInfo {
 

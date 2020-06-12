@@ -1,7 +1,7 @@
 import { SetUserActivity } from '../../Responsibilities/Elements/Common/UserActivity/SetUserActivity';
 import { CheckTokenDB } from './../../Responsibilities/Elements/Authentication/CreateToken/SubRespo/CheckTokenDB';
 import { CheckPassword } from './../../Responsibilities/Elements/Authentication/CheckPassword';
-import { FetchUserInfo } from './../../Responsibilities/Elements/FetchData/FetchUserInfo';
+import { FetchUserInfo } from '../../Responsibilities/Elements/Common/FetchData/FetchUserInfo';
 import { CreateToken } from './../../Responsibilities/Elements/Authentication/CreateToken/CreateToken';
 import { Test } from './../../Responsibilities/Elements/Test/Test';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
