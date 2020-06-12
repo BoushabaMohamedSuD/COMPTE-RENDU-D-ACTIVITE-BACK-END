@@ -48,7 +48,7 @@ export class User extends Model<User> {
     Authority!: string;
 
     @AllowNull(false)
-    @Default(true)
+    @Default(false)
     @Column
     IsActive!: boolean;
 
