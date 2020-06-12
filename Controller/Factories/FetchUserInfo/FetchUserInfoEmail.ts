@@ -1,10 +1,8 @@
-import { GenToken } from './SubRespo/GenToken';
-import { CheckTokenDB } from './SubRespo/CheckTokenDB';
-import { SubRespoHolder } from './../../../Holders/SubRespoHolder';
-import { ResponsibilitiesHolder } from './../../../Holders/ResponsibilitiesHolder';
-import { resolve } from 'bluebird';
+import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
 
-export class CreateToken implements ResponsibilitiesHolder {
+
+
+export class FetchUserInfoEmail implements ResponsibilitiesHolder {
 
     private Nextchaine!: ResponsibilitiesHolder;
     //private SubRespo!: SubRespoHolder;
@@ -53,7 +51,27 @@ export class CreateToken implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
+            if (this.Nextchaine != null) {
+                console.log('going to next chaine');
+                this.Nextchaine.process()
+                    .then((resp: any) => {
+                        // resp is her false or true
+                        if (resp) {
+                            resolve(resp);
+                        } else {
+                            reject(resp);
+                        }
 
+                    })
+                    .catch((err: any) => {
+                        // console.log(err);
+                        //console.log('Error');
+                        reject(err);
+                    });
+            } else {
+                console.log('this is the end of the chaine');
+                resolve(true);
+            }
 
 
 
