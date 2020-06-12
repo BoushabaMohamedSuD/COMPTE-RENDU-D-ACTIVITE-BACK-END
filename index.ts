@@ -13,6 +13,7 @@ const port = Port.getInstance().getPort();
 
 const RouterTest = require('./Router/Test').router;
 const RouterSignIn = require('./Router/Authentication').router;
+const RouterAdminOp = require('./Router/AdminOp').router;
 
 
 app.use(function (req, res, next) {
@@ -27,6 +28,7 @@ app.use(bodyParser({ extended: false }));
 
 
 app.use(RouterSignIn);
+app.use('/Admin', RouterAdminOp);
 app.use('/Test', RouterTest);
 
 

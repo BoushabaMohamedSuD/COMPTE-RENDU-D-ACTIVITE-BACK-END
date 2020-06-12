@@ -46,30 +46,47 @@ export class CreateUser implements StrategiesHolder {
 
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.chaine
-                .process()
-                .then((resp) => {
-                    //resp true or false
-                    if (resp) {
-                        //if the response is true we resolve data
+            if (this.chaine != null) {
+                this.chaine
+                    .process()
+                    .then((resp) => {
+                        //resp true or false
+                        if (resp) {
+                            //if the response is true we resolve data
 
-                        console.log(this.data);
-                        resolve(this.data);
-                    } else {
-                        // if not some of resp fails
-                        reject("some of respo fails");
+                            console.log(this.data);
+                            resolve(this.data);
+                        } else {
+                            // if not some of resp fails
+                            reject("some of respo fails");
 
-                    }
-                })
-                .catch(err => {
-                    //some of respo reject an error
-                    reject(err);
-                });
+                        }
+                    })
+                    .catch(err => {
+                        //some of respo reject an error
+                        reject(err);
+                    });
+
+            } else {
+                console.log("no chaine is defined yet");
+                /* this.data.response = {
+                     ...this.data.response,
+                     ...this.data.request,
+                     ...this.data.elements
+                 }*/
+                //resolve(this.data);
+                reject("no chaine is defined yet")
+            }
+
 
         })
     };
 
     private treatment(): void {
+
+        // the token is in
+        // (this.data.request.headers.autorization).split(" ")[1]
+
         const bodey = this.req.body
         const headers = this.req.headers
         this.data.request = {
@@ -77,7 +94,11 @@ export class CreateUser implements StrategiesHolder {
             bodey,
             headers
         }
-        // console.log(this.data);
+        this.data.elements = {
+            ...this.data.elements,
+            reqtoken: (headers.authorization.split(" "))[1]
+        }
+        //console.log(this.data);
 
     }
 
