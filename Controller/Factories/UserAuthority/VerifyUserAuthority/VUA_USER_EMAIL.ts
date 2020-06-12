@@ -38,7 +38,7 @@ export class VUA_USER_EMAIL implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            User.findOne({ where: { Email: this.data.elements.bcode } })
+            User.findOne({ where: { Email: this.data.elements.email } })
                 .then((user) => {
 
                     if (user != null) {

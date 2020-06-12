@@ -3,7 +3,7 @@ import { ResponsibilitiesHolder } from '../../../Responsibilities/Holders/Respon
 
 
 
-export class VUA_ADMIN_EMAIL implements ResponsibilitiesHolder {
+export class VUA_USER_BCODE implements ResponsibilitiesHolder {
 
     private Nextchaine!: ResponsibilitiesHolder;
     //private SubRespo!: SubRespoHolder;
@@ -38,11 +38,11 @@ export class VUA_ADMIN_EMAIL implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            User.findOne({ where: { Email: this.data.elements.email } })
+            User.findOne({ where: { Email: this.data.elements.bcode } })
                 .then((user) => {
 
                     if (user != null) {
-                        if (user.Authority == "admin") {
+                        if (user.Authority == "user") {
                             if (this.Nextchaine != null) {
                                 console.log('going to next chaine');
                                 this.Nextchaine.process()
@@ -75,7 +75,7 @@ export class VUA_ADMIN_EMAIL implements ResponsibilitiesHolder {
 
 
                     } else {
-                        let err = "user is null from vua admin email";
+                        let err = "user is null from vua admin bcode";
                         console.log(err);
                         reject(err);
 
