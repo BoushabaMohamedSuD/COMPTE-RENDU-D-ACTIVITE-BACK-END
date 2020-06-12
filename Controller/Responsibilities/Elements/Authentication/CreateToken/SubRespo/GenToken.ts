@@ -49,8 +49,8 @@ export class GenToken implements ResponsibilitiesHolder {
 
                     if (!errToken) {
 
-                        this.data.response = {
-                            ...this.data.response,
+                        this.data.elements = {
+                            ...this.data.elements,
                             token: resToken,
                         }
 

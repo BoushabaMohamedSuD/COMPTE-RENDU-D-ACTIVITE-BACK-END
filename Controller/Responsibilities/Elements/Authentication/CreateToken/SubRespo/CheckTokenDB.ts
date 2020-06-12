@@ -89,8 +89,8 @@ export class CheckTokenDB implements ResponsibilitiesHolder {
 
                     if (!removeOldToken) {
 
-                        this.data.response = {
-                            ...this.data.response,
+                        this.data.elements = {
+                            ...this.data.elements,
                             token: oriToken
                         }
 

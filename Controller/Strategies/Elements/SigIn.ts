@@ -55,6 +55,18 @@ export class SignIn implements StrategiesHolder {
                     //resp true or false
                     if (resp) {
                         //if the response is true we resolve data
+
+                        this.data.response = {
+                            ...this.data.response,
+                            id: this.data.elements.id,
+                            email: this.data.elements.email,
+                            authority: this.data.elements.authority,
+                            firstname: this.data.elements.firstname,
+                            lastname: this.data.elements.lastname,
+                            bcode: this.data.elements.bcode,
+                            isactive: this.data.elements.isactive,
+                            token: this.data.elements.token,
+                        }
                         console.log(this.data);
                         resolve(this.data);
                     } else {

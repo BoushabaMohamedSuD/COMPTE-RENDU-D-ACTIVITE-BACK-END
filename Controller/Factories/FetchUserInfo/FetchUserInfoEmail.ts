@@ -53,7 +53,7 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
                             email: user.Email,
                             password: user.Password,
                             authority: user.Authority,
-                            isActive: user.IsActive,
+                            isactive: user.IsActive,
                             firstname: user.FirstName,
                             lastname: user.LastName,
                             bcode: user.BusinessCode,
@@ -64,7 +64,7 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
 
                         }
 
-                        this.data.response = {
+                        /*this.data.response = {
                             id: user.id,
                             email: user.Email,
                             authority: user.Authority,
@@ -72,7 +72,7 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
                             firstname: user.FirstName,
                             lastname: user.LastName,
                             bcode: user.BusinessCode
-                        }
+                        }*/
 
                         user.$get('token')
                             .then(token => {
