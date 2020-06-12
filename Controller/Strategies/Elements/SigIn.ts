@@ -1,3 +1,4 @@
+import { FetchUserInfo } from './../../Responsibilities/Elements/FetchData/FetchUserInfo';
 import { CreateToken } from './../../Responsibilities/Elements/Authentication/CreateToken/CreateToken';
 import { Test } from './../../Responsibilities/Elements/Test/Test';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
@@ -36,7 +37,8 @@ export class SignIn implements StrategiesHolder {
         this.treatment();
 
 
-        this.chaine = new CreateToken(this.data);
+        this.chaine = FetchUserInfo.setFactorie(this.data, 'email');
+
 
 
 
