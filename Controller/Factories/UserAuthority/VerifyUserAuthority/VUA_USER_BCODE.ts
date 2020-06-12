@@ -75,7 +75,7 @@ export class VUA_USER_BCODE implements ResponsibilitiesHolder {
 
 
                     } else {
-                        let err = "user is null from vua admin bcode";
+                        let err = "user is null from vua user bcode";
                         console.log(err);
                         reject(err);
 
