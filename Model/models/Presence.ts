@@ -29,6 +29,11 @@ export class Presence extends Model<Presence> {
     @Column
     Day!: Number;
 
+
+    @AllowNull(false)
+    @Column
+    Month!: Number
+
     @AllowNull(false)
     @Column
     Year!: Number;

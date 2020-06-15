@@ -38,6 +38,12 @@ export class Absence extends Model<Absence> {
     @Column
     Day!: Number;
 
+
+    @AllowNull(false)
+    @Column
+    Month!: Number
+
+
     @AllowNull(false)
     @Column
     Year!: Number;

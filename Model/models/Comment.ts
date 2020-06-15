@@ -22,6 +22,12 @@ export class Comment extends Model<Comment> {
     @Column
     Day!: Number;
 
+
+    @AllowNull(false)
+    @Column
+    Month!: Number
+
+
     @AllowNull(false)
     @Column
     Year!: Number;

@@ -39,6 +39,7 @@ export class CreateUser implements StrategiesHolder {
         this.chaine = new TokenValidation(this.data);
 
         this.chaine
+            .setNextChaine(FetchUserInfo.getFactorie(this.data, 'email'))
             .setNextChaine(VerifyUserAuthority.getFactorie(this.data, ['admin', 'email']))
             .setNextChaine(new CreateUserByAdmin(this.data))
 
