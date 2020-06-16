@@ -45,11 +45,11 @@ sequelize.sync(/*{ force: true }*/)
              Authority: "admin"
  
          }, {
-             FirstName: "Jlil",
-             LastName: "Tibari",
-             Email: "Tibari@gmail.com",
-             Password: "0123",
-             BusinessCode: "12",
+             FirstName: "Jldsil",
+             LastName: "Tibdsdari",
+             Email: "Tibasqsri@gmail.com",
+             Password: "01s23",
+             BusinessCode: "1sq2",
              Authority: "admin"
  
          }]).then(() => console.log("user has been created"))*/

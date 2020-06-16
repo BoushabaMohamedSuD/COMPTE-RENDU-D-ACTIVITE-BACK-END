@@ -1,6 +1,6 @@
 import { User } from './../../../Model/models/User';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
-import { in } from 'sequelize/types/lib/operators';
+
 
 const AWS = require('aws-sdk');
 AWS.config.update({ region: 'us-east-1' });
@@ -62,7 +62,7 @@ export class FelicitationEmail implements ResponsibilitiesHolder {
                 }
             }
 
-            let data = "Hello dear +" + info.ori.lastname + " \n"
+            let data = "Hello dear " + info.target.lastname + " " + info.target.firsname + " \n"
                 + "you are now officially an active member of our "
                 + "community eRAB technologies "
                 + "those information below are your credentials \n \n"
@@ -72,17 +72,17 @@ export class FelicitationEmail implements ResponsibilitiesHolder {
                 + "Email: " + info.target.email + "\n"
                 + "Password: " + info.target.password + "\n\n"
                 + "made it by\n\n"
-                + "Firstname: +" + info.ori.firstname + "\n"
+                + "Firstname: " + info.ori.firstname + "\n"
                 + "Lastname: " + info.ori.lastname + "";
             console.log(data);
             var params = {
                 Destination: { /* required */
                     CcAddresses: [
-                        'nodejs1998yz@gmail.com',
+                        info.target.email,
 
                     ],
                     ToAddresses: [
-                        'nodejs1998yz@gmail.com',
+                        info.target.email,
 
                     ]
                 },
@@ -110,6 +110,7 @@ export class FelicitationEmail implements ResponsibilitiesHolder {
                     reject(err);
                 } else {
                     console.log(data);
+                    // console.log(data);
                     if (this.Nextchaine != null) {
                         console.log('going to next chaine');
                         this.Nextchaine.process()

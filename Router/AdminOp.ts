@@ -15,8 +15,18 @@ const router = express.Router();
 
 /*
 {
-    email:"med1998yz@gmail.com"  OR    bcode:"15623"
-    password:"********"
+"email":"med1998yz@gmail.com",
+"firstname":"Mohamed",
+"lastname":"Boushaba",
+"bcode":"15",
+"target":{
+    "email":"mefdfd1998yz@gmail.com",
+    "firstname":"Mohamed",
+    "lastname":"Boushaba",
+    "bcode":"155",
+    "password":"tysK453"
+
+}
 }
 */
 

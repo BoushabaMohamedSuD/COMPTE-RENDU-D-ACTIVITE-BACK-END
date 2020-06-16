@@ -1,3 +1,4 @@
+import { SnedEmail } from './../../Responsibilities/Elements/Common/Emails/SendEmail';
 import { CreateUserByAdmin } from './../../Responsibilities/Elements/CreateUserByAdmin/CreateUserByAdmin';
 import { VerifyUserAuthority } from './../../Responsibilities/Elements/Common/UserAuthority/VerifyUserAuthority';
 import { TokenValidation } from './../../Responsibilities/Elements/Authorization/TokenValidation';
@@ -42,6 +43,7 @@ export class CreateUser implements StrategiesHolder {
             .setNextChaine(FetchUserInfo.getFactorie(this.data, 'email'))
             .setNextChaine(VerifyUserAuthority.getFactorie(this.data, ['admin', 'email']))
             .setNextChaine(new CreateUserByAdmin(this.data))
+            .setNextChaine(SnedEmail.getFactorie(this.data, 'felicitaion'))
 
 
 
