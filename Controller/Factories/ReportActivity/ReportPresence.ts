@@ -64,7 +64,7 @@ export class ReportPresence implements ResponsibilitiesHolder {
                         console.log("create presence");
                         this.data.response = {
                             ...this.data.response,
-                            status: "create report"
+                            statusPresence: "create presence"
                         }
 
                         Presence.create(info)
@@ -134,10 +134,10 @@ export class ReportPresence implements ResponsibilitiesHolder {
 
 
                     } else {
-                        console.log("update response");
+                        console.log("update presence");
                         this.data.response = {
                             ...this.data.response,
-                            status: "update response"
+                            status: "update presence"
                         }
 
                         Presence.update(info,

@@ -59,10 +59,10 @@ export class ReportComment implements ResponsibilitiesHolder {
             })
                 .then((oripre) => {
                     if (oripre == null || oripre == undefined) {
-                        console.log("create presence");
+                        console.log("create Comment");
                         this.data.response = {
                             ...this.data.response,
-                            status: "create report"
+                            statusComment: "create Comment"
                         }
 
                         Presence.create(info)
@@ -132,12 +132,11 @@ export class ReportComment implements ResponsibilitiesHolder {
 
 
                     } else {
-                        console.log("update response");
+                        console.log("update Comment");
                         this.data.response = {
                             ...this.data.response,
-                            status: "update response"
+                            statusComment: "Update Comment"
                         }
-
                         Presence.update(info,
                             {
                                 where: {

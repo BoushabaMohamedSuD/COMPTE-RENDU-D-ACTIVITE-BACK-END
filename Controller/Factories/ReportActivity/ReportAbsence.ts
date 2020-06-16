@@ -63,10 +63,10 @@ export class ReportAbsence implements ResponsibilitiesHolder {
             })
                 .then((oripre) => {
                     if (oripre == null || oripre == undefined) {
-                        console.log("create presence");
+                        console.log("create absence");
                         this.data.response = {
                             ...this.data.response,
-                            status: "create report"
+                            statusAbsence: "create absence"
                         }
 
                         Presence.create(info)
@@ -136,10 +136,10 @@ export class ReportAbsence implements ResponsibilitiesHolder {
 
 
                     } else {
-                        console.log("update response");
+                        console.log("update absence");
                         this.data.response = {
                             ...this.data.response,
-                            status: "update response"
+                            statusAbsence: "update absence"
                         }
 
                         Presence.update(info,
