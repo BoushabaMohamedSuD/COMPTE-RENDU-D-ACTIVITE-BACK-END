@@ -77,7 +77,7 @@ export class CreateUserByAdmin implements ResponsibilitiesHolder {
                 })
                 .catch((err) => {
                     console.log(err);
-                    reject(err);
+                    reject("canoot create user by admin");
                 })
 
 

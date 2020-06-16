@@ -1,6 +1,7 @@
+import { Test } from './../../Controller/Responsibilities/Elements/Test/Test';
 import { User } from './User';
 
-import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasMany, ForeignKey, AllowNull, Unique, NotNull, Default, HasOne, BelongsTo } from "sequelize-typescript";
+import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasMany, ForeignKey, AllowNull, Unique, NotNull, Default, HasOne, BelongsTo, DataType, Length } from "sequelize-typescript";
 
 
 
@@ -13,9 +14,10 @@ import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasM
 export class Token extends Model<Token> {
 
 
+    // you cannot use @uniqe with text
+
     @AllowNull(false)
-    @Unique
-    @Column
+    @Column(DataType.TEXT({ length: "long" }))
     Token!: string;
 
     @CreatedAt
