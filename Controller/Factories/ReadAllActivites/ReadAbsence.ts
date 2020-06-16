@@ -37,12 +37,19 @@ export class ReadAbsence implements ResponsibilitiesHolder {
             this.data.elements
                 .model.user.$get('absences')
                 .then((absences: any) => {
+                    let data: any[] = [];
+                    absences.forEach((element: any) => {
+                        if (element.Year == this.data.request.bodey.year) {
+                            if (element.Month == this.data.request.bodey.month) {
+                                data.push(element);
+                            }
+                        }
 
+                    });
                     this.data.response = {
                         ...this.data.response,
-                        absences: absences
+                        absences: data
                     }
-
                     if (this.Nextchaine != null) {
                         console.log('going to next chaine');
                         this.Nextchaine.process()

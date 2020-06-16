@@ -38,11 +38,19 @@ export class ReadComments implements ResponsibilitiesHolder {
                 .model.user.$get('comments')
                 .then((comments: any) => {
 
+                    let data: any[] = [];
+                    comments.forEach((element: any) => {
+                        if (element.Year == this.data.request.bodey.year) {
+                            if (element.Month == this.data.request.bodey.month) {
+                                data.push(element);
+                            }
+                        }
+
+                    });
                     this.data.response = {
                         ...this.data.response,
-                        comments: comments
+                        comments: data
                     }
-
                     if (this.Nextchaine != null) {
                         console.log('going to next chaine');
                         this.Nextchaine.process()

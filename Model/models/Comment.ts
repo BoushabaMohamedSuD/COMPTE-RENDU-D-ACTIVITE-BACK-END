@@ -1,6 +1,6 @@
 import { User } from './User';
 
-import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasMany, ForeignKey, AllowNull, Unique, NotNull, Default, HasOne, BelongsTo } from "sequelize-typescript";
+import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasMany, ForeignKey, AllowNull, Unique, NotNull, Default, HasOne, BelongsTo, DataType } from "sequelize-typescript";
 
 
 
@@ -13,7 +13,7 @@ import { Model, Column, Table, BelongsToMany, Scopes, CreatedAt, UpdatedAt, HasM
 export class Comment extends Model<Comment> {
 
 
-    @Column
+    @Column(DataType.TEXT({ length: "long" }))
     comment!: string;
 
 

@@ -1,5 +1,6 @@
 import { User } from './../../../Model/models/User';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
+import { threadId } from 'worker_threads';
 
 
 
@@ -37,10 +38,18 @@ export class ReadPresence implements ResponsibilitiesHolder {
             this.data.elements
                 .model.user.$get('presences')
                 .then((presences: any) => {
+                    let data: any[] = [];
+                    presences.forEach((element: any) => {
+                        if (element.Year == this.data.request.bodey.year) {
+                            if (element.Month == this.data.request.bodey.month) {
+                                data.push(element);
+                            }
+                        }
 
+                    });
                     this.data.response = {
                         ...this.data.response,
-                        presences: presences
+                        presences: data
                     }
 
                     if (this.Nextchaine != null) {

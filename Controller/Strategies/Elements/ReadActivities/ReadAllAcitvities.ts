@@ -1,3 +1,4 @@
+import { FetchUserInfo } from './../../../Responsibilities/Elements/Common/FetchData/FetchUserInfo';
 import { ReadAllActivities } from './../../../Responsibilities/Elements/ReadAllAcitvities/ReadAllActivities';
 
 import { TokenValidation } from './../../../Responsibilities/Elements/Authorization/TokenValidation';
@@ -33,9 +34,10 @@ export class ReadAllActivitesStrategy implements StrategiesHolder {
         this.chaine = new TokenValidation(this.data);
 
         this.chaine
-            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'presences'))
-            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'absences'))
-            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'comments'))
+            .setNextChaine(FetchUserInfo.getFactorie(this.data, 'email'))
+            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'presence'))
+            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'absence'))
+            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'comment'))
 
 
 

@@ -15,10 +15,10 @@ export class ReadAllActivities {
         if (operation == 'presence') {
             return new ReadPresence(data);
 
-        } else if (operation[0] = 'absence') {
+        } else if (operation == 'absence') {
             return new ReadAbsence(data);
 
-        } else if (operation[0] = 'comment') {
+        } else if (operation == 'comment') {
             return new ReadComments(data);
 
         }
