@@ -39,7 +39,6 @@ export class ReportPresence implements ResponsibilitiesHolder {
 
 
 
-
             let info = {
                 Day: this.data.request.bodey.activity.day,
                 Month: this.data.request.bodey.activity.month,
