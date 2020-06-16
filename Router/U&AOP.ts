@@ -11,23 +11,21 @@ const router = express.Router();
 
 
 /*
-
 {
-"email":"med1998yz@gmail.com",
-"firstname":"Mohamed",
-"lastname":"Boushaba",
-"bcode":"15",
-"activity":{
-    type:"presence"
-    day:15,
-    month:5,
-    year:2020,
-    mission:false,
-    format:true,
-    inter:false
+    "email": "med1998yz@gmail.com",
+    "firstname": "Mohamed",
+    "lastname": "Boushaba",
+    "bcode": "15",
+    "activity": {
+        "type": "presence",
+        "day": 11,
+        "month": 6,
+        "year": 2020,
+        "mission": true,
+        "format": false,
+        "inter": false
+    }
 }
-}
-
 
 
 */
