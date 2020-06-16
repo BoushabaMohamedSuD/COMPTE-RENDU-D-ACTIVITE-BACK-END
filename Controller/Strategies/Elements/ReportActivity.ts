@@ -1,3 +1,5 @@
+import { ReportActivityResp } from './../../Responsibilities/Elements/ReportActivity/ReportActivityResp';
+import { FetchUserInfo } from './../../Responsibilities/Elements/Common/FetchData/FetchUserInfo';
 import { SnedEmail } from './../../Responsibilities/Elements/Common/Emails/SendEmail';
 import { CreateUserByAdmin } from './../../Responsibilities/Elements/CreateUserByAdmin/CreateUserByAdmin';
 import { VerifyUserAuthority } from './../../Responsibilities/Elements/Common/UserAuthority/VerifyUserAuthority';
@@ -5,13 +7,12 @@ import { TokenValidation } from './../../Responsibilities/Elements/Authorization
 import { SetUserActivity } from '../../Responsibilities/Elements/Common/UserActivity/SetUserActivity';
 import { CheckTokenDB } from './../../Responsibilities/Elements/Authentication/CreateToken/SubRespo/CheckTokenDB';
 import { CheckPassword } from './../../Responsibilities/Elements/Authentication/CheckPassword';
-import { FetchUserInfo } from '../../Responsibilities/Elements/Common/FetchData/FetchUserInfo';
 import { CreateToken } from './../../Responsibilities/Elements/Authentication/CreateToken/CreateToken';
 import { Test } from './../../Responsibilities/Elements/Test/Test';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
 
 import { StrategiesHolder } from './../holders/StrategiesHolder';
-export class ReportActivity implements StrategiesHolder {
+export class ReportActivityPresence implements StrategiesHolder {
     private chaine!: ResponsibilitiesHolder;
     private req: any;
     private data: {
@@ -41,14 +42,7 @@ export class ReportActivity implements StrategiesHolder {
 
         this.chaine
             .setNextChaine(FetchUserInfo.getFactorie(this.data, 'email'))
-            .setNextChaine(VerifyUserAuthority.getFactorie(this.data, ['admin', 'email']))
-            .setNextChaine(new CreateUserByAdmin(this.data))
-            .setNextChaine(SnedEmail.getFactorie(this.data, 'felicitaion'))
-
-
-
-
-
+            .setNextChaine(ReportActivityResp.getFactorie(this.data, 'presence'))
 
 
 

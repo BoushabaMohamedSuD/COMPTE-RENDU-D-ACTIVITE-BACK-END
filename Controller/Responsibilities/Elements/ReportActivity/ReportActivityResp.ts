@@ -1,3 +1,4 @@
+import { ReportPresence } from './../../../Factories/ReportActivity/ReportPresence';
 import { ResponsibilitiesHolder } from './../../Holders/ResponsibilitiesHolder';
 
 export class ReportActivityResp {
@@ -7,6 +8,7 @@ export class ReportActivityResp {
         if (operation == 'presence') {
 
         } else if (operation == 'absence') {
+            return new ReportPresence(data);
 
         } else if (operation == "comment") {
 

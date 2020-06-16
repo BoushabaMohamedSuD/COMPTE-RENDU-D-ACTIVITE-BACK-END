@@ -1,3 +1,5 @@
+import { ReportActivityPresence } from './../Controller/Strategies/Elements/ReportActivity';
+
 import { CreateUser } from '../Controller/Strategies/Elements/CreateUser';
 import { SignIn } from '../Controller/Strategies/Elements/SigIn';
 
@@ -32,6 +34,22 @@ const router = express.Router();
 
 router.post('/', (req, res) => {
 
+    console.log("reprot activity presence ")
+    new Context(new ReportActivityPresence(req))
+        .process()
+        .then((
+            data: {
+                request: any,
+                elements: any,
+                response: any
+
+            }) => {
+            res.send(data.response);
+
+        })
+        .catch((err) => {
+            res.status(400).send("report presence activity  failed : " + err);
+        });
 
 
 

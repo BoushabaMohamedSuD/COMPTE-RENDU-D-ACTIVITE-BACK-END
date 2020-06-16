@@ -1,3 +1,4 @@
+import { Model } from 'sequelize-typescript';
 import { User } from './../../../Model/models/User';
 import { ResponsibilitiesHolder } from './../../Responsibilities/Holders/ResponsibilitiesHolder';
 
@@ -34,27 +35,44 @@ export class ReportPresence implements ResponsibilitiesHolder {
     public process(): Promise<any> {
         return new Promise((resolve, reject) => {
 
-            if (this.Nextchaine != null) {
-                console.log('going to next chaine');
-                this.Nextchaine.process()
-                    .then((resp: any) => {
-                        // resp is her false or true
-                        if (resp) {
-                            resolve(resp);
-                        } else {
-                            reject(resp);
-                        }
+            this.data.elements
+                .model.user.$get('presences')
+                .then((presences: any) => {
 
-                    })
-                    .catch((err: any) => {
-                        // console.log(err);
-                        //console.log('Error');
-                        reject(err);
-                    });
-            } else {
-                console.log('this is the end of the chaine');
-                resolve(true);
-            }
+                    this.data.response = {
+                        ...this.data.response,
+                        presence: presences
+                    }
+
+                    if (this.Nextchaine != null) {
+                        console.log('going to next chaine');
+                        this.Nextchaine.process()
+                            .then((resp: any) => {
+                                // resp is her false or true
+                                if (resp) {
+                                    resolve(resp);
+                                } else {
+                                    reject(resp);
+                                }
+
+                            })
+                            .catch((err: any) => {
+                                // console.log(err);
+                                //console.log('Error');
+                                reject(err);
+                            });
+                    } else {
+                        console.log('this is the end of the chaine');
+                        resolve(true);
+                    }
+
+                })
+                .catch(((err: any) => {
+                    console.log(err);
+                    reject(err);
+                }))
+
+
 
 
 
