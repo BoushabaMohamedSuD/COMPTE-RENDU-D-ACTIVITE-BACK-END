@@ -16,6 +16,11 @@ const router = express.Router();
     "firstname": "Mohamed",
     "lastname": "Boushaba",
     "bcode": "15",
+    "today":{
+        "day": 11,
+        "month": 6,
+        "year": 2020,
+    }
     "activity": {
         "type": "presence",
         "day": 11,

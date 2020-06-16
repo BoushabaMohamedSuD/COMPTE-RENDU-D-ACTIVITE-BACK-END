@@ -52,7 +52,7 @@ export class NullAbsence implements ResponsibilitiesHolder {
 
 
 
-            Presence.findOne({
+            Absence.findOne({
                 where: {
                     Day: info.Day,
                     Month: info.Month,
