@@ -1,8 +1,10 @@
+import { ReadAllActivities } from './../../../Responsibilities/Elements/ReadAllAcitvities/ReadAllActivities';
+
 import { TokenValidation } from './../../../Responsibilities/Elements/Authorization/TokenValidation';
 import { ResponsibilitiesHolder } from './../../../Responsibilities/Holders/ResponsibilitiesHolder';
 import { StrategiesHolder } from './../../Holders/StrategiesHolder';
 
-export class ReadAllActivites implements StrategiesHolder {
+export class ReadAllActivitesStrategy implements StrategiesHolder {
     private chaine!: ResponsibilitiesHolder;
     private req: any;
     private data: {
@@ -29,6 +31,12 @@ export class ReadAllActivites implements StrategiesHolder {
         this.treatment();
 
         this.chaine = new TokenValidation(this.data);
+
+        this.chaine
+            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'presences'))
+            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'absences'))
+            .setNextChaine(ReadAllActivities.getFactorie(this.data, 'comments'))
+
 
 
 
