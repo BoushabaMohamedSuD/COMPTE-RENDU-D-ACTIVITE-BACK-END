@@ -42,8 +42,8 @@ export class ReportActivityPresence implements StrategiesHolder {
 
         this.chaine
             .setNextChaine(FetchUserInfo.getFactorie(this.data, 'email'))
-            .setNextChaine(ReportActivityResp.getFactorie(this.data, 'presence'))
-
+            .setNextChaine(ReportActivityResp.getFactorie(this.data, ['full', 'presence']))
+            .setNextChaine(ReportActivityResp.getFactorie(this.data, ['null', 'absence']))
 
 
 

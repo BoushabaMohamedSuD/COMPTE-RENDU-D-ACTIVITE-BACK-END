@@ -3,7 +3,7 @@ import { ResponsibilitiesHolder } from './../../../Responsibilities/Holders/Resp
 
 
 
-export class ReportPresence implements ResponsibilitiesHolder {
+export class NullPresence implements ResponsibilitiesHolder {
 
     private Nextchaine!: ResponsibilitiesHolder;
     //private SubRespo!: SubRespoHolder;

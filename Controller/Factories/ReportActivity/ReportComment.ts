@@ -1,3 +1,4 @@
+import { Comment } from './../../../Model/models/Comment';
 import { Presence } from './../../../Model/models/Presence';
 import { Model } from 'sequelize-typescript';
 import { User } from './../../../Model/models/User';
@@ -43,14 +44,14 @@ export class ReportComment implements ResponsibilitiesHolder {
                 Day: this.data.request.bodey.activity.day,
                 Month: this.data.request.bodey.activity.month,
                 Year: this.data.request.bodey.activity.year,
-                comment: this.data.request.bodey.activity.cp,
+                comment: this.data.request.bodey.activity.comment,
 
             }
             console.log(info);
 
 
 
-            Presence.findOne({
+            Comment.findOne({
                 where: {
                     Day: info.Day,
                     Month: info.Month,
@@ -65,52 +66,34 @@ export class ReportComment implements ResponsibilitiesHolder {
                             statusComment: "create Comment"
                         }
 
-                        Presence.create(info)
-                            .then((presence) => {
+                        Comment.create(info)
+                            .then((comment) => {
                                 this.data.elements
-                                    .model.user.$add('presences', presence)
+                                    .model.user.$add('comments', comment)
                                     .then((resp: any) => {
-                                        this.data.elements
-                                            .model.user.$get('presences')
-                                            .then((presences: any) => {
-
-                                                this.data.response = {
-                                                    ...this.data.response,
-                                                    presence: presences
-                                                }
 
 
+                                        if (this.Nextchaine != null) {
+                                            console.log('going to next chaine');
+                                            this.Nextchaine.process()
+                                                .then((resp: any) => {
+                                                    // resp is her false or true
+                                                    if (resp) {
+                                                        resolve(resp);
+                                                    } else {
+                                                        reject(resp);
+                                                    }
 
-                                                if (this.Nextchaine != null) {
-                                                    console.log('going to next chaine');
-                                                    this.Nextchaine.process()
-                                                        .then((resp: any) => {
-                                                            // resp is her false or true
-                                                            if (resp) {
-                                                                resolve(resp);
-                                                            } else {
-                                                                reject(resp);
-                                                            }
-
-                                                        })
-                                                        .catch((err: any) => {
-                                                            // console.log(err);
-                                                            //console.log('Error');
-                                                            reject(err);
-                                                        });
-                                                } else {
-                                                    console.log('this is the end of the chaine');
-                                                    resolve(true);
-                                                }
-
-
-
-                                            })
-                                            .catch(((err: any) => {
-                                                console.log(err);
-                                                reject(err);
-                                            }))
-
+                                                })
+                                                .catch((err: any) => {
+                                                    // console.log(err);
+                                                    //console.log('Error');
+                                                    reject(err);
+                                                });
+                                        } else {
+                                            console.log('this is the end of the chaine');
+                                            resolve(true);
+                                        }
 
 
 
@@ -137,7 +120,7 @@ export class ReportComment implements ResponsibilitiesHolder {
                             ...this.data.response,
                             statusComment: "Update Comment"
                         }
-                        Presence.update(info,
+                        Comment.update(info,
                             {
                                 where: {
                                     Day: info.Day,
@@ -145,50 +128,33 @@ export class ReportComment implements ResponsibilitiesHolder {
                                     Year: info.Year
                                 }
                             })
-                            .then((presence) => {
+                            .then((comment) => {
                                 this.data.elements
-                                    .model.user.$add('presences', presence)
+                                    .model.user.$add('comments', comment)
                                     .then((resp: any) => {
-                                        this.data.elements
-                                            .model.user.$get('presences')
-                                            .then((presences: any) => {
-
-                                                this.data.response = {
-                                                    ...this.data.response,
-                                                    presence: presences
-                                                }
 
 
+                                        if (this.Nextchaine != null) {
+                                            console.log('going to next chaine');
+                                            this.Nextchaine.process()
+                                                .then((resp: any) => {
+                                                    // resp is her false or true
+                                                    if (resp) {
+                                                        resolve(resp);
+                                                    } else {
+                                                        reject(resp);
+                                                    }
 
-                                                if (this.Nextchaine != null) {
-                                                    console.log('going to next chaine');
-                                                    this.Nextchaine.process()
-                                                        .then((resp: any) => {
-                                                            // resp is her false or true
-                                                            if (resp) {
-                                                                resolve(resp);
-                                                            } else {
-                                                                reject(resp);
-                                                            }
-
-                                                        })
-                                                        .catch((err: any) => {
-                                                            // console.log(err);
-                                                            //console.log('Error');
-                                                            reject(err);
-                                                        });
-                                                } else {
-                                                    console.log('this is the end of the chaine');
-                                                    resolve(true);
-                                                }
-
-
-
-                                            })
-                                            .catch(((err: any) => {
-                                                console.log(err);
-                                                reject(err);
-                                            }))
+                                                })
+                                                .catch((err: any) => {
+                                                    // console.log(err);
+                                                    //console.log('Error');
+                                                    reject(err);
+                                                });
+                                        } else {
+                                            console.log('this is the end of the chaine');
+                                            resolve(true);
+                                        }
 
 
 
@@ -214,8 +180,6 @@ export class ReportComment implements ResponsibilitiesHolder {
                     console.log(err);
                     reject(err);
                 })
-
-
 
 
 
