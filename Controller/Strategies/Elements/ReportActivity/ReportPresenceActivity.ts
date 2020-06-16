@@ -1,3 +1,4 @@
+import { CheckTime } from './../../../Responsibilities/Elements/Common/CheckTime/CheckTime';
 import { ReportActivityResp } from '../../../Responsibilities/Elements/ReportActivity/ReportActivityResp';
 import { FetchUserInfo } from '../../../Responsibilities/Elements/Common/FetchData/FetchUserInfo';
 import { SnedEmail } from '../../../Responsibilities/Elements/Common/Emails/SendEmail';
@@ -41,6 +42,8 @@ export class ReportActivityPresence implements StrategiesHolder {
         this.chaine = new TokenValidation(this.data);
 
         this.chaine
+            /*.setNextChaine(CheckTime.getFactorie(this.data, 'general'))
+            .setNextChaine(CheckTime.getFactorie(this.data, 'report'))*/
             .setNextChaine(FetchUserInfo.getFactorie(this.data, 'email'))
             .setNextChaine(ReportActivityResp.getFactorie(this.data, ['full', 'presence']))
             .setNextChaine(ReportActivityResp.getFactorie(this.data, ['null', 'absence']))
