@@ -74,6 +74,7 @@ export class FetchUserInfoEmail implements ResponsibilitiesHolder {
                             bcode: user.BusinessCode
                         }*/
 
+
                         user.$get('token')
                             .then(token => {
                                 if (token != null) {

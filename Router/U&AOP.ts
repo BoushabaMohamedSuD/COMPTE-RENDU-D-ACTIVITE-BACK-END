@@ -1,4 +1,4 @@
-import { ReportActivityPresence } from './../Controller/Strategies/Elements/ReportActivity';
+import { ReportActivityPresence } from '../Controller/Strategies/Elements/ReportActivity/ReportPresenceActivity';
 
 import { CreateUser } from '../Controller/Strategies/Elements/CreateUser';
 import { SignIn } from '../Controller/Strategies/Elements/SigIn';
@@ -19,9 +19,9 @@ const router = express.Router();
 "bcode":"15",
 "activity":{
     type:"presence"
-    day:"15",
-    month:"5",
-    year:"2020",
+    day:15,
+    month:5,
+    year:2020,
     mission:false,
     format:true,
     inter:false
@@ -32,7 +32,7 @@ const router = express.Router();
 
 */
 
-router.post('/', (req, res) => {
+router.post('/ReportPresence', (req, res) => {
 
     console.log("reprot activity presence ")
     new Context(new ReportActivityPresence(req))

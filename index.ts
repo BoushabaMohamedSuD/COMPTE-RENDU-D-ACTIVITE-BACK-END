@@ -14,7 +14,7 @@ const port = Port.getInstance().getPort();
 const RouterTest = require('./Router/Test').router;
 const RouterSignIn = require('./Router/Authentication').router;
 const RouterAdminOp = require('./Router/AdminOp').router;
-
+const RouterUAOp = require('./Router/U&AOP').router;
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -29,6 +29,7 @@ app.use(bodyParser({ extended: false }));
 
 app.use(RouterSignIn);
 app.use('/Admin', RouterAdminOp);
+app.use('/Op', RouterUAOp);
 app.use('/Test', RouterTest);
 
 

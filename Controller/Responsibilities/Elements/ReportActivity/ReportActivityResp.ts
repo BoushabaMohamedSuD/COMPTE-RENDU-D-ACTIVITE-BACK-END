@@ -6,9 +6,9 @@ export class ReportActivityResp {
     public static getFactorie(data: any, operation: any): ResponsibilitiesHolder {
 
         if (operation == 'presence') {
-
-        } else if (operation == 'absence') {
             return new ReportPresence(data);
+        } else if (operation == 'absence') {
+
 
         } else if (operation == "comment") {
 
