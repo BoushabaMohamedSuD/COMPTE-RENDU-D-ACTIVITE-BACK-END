@@ -70,46 +70,31 @@ export class NullPresence implements ResponsibilitiesHolder {
                                 this.data.elements
                                     .model.user.$add('presences', presence)
                                     .then((resp: any) => {
-                                        this.data.elements
-                                            .model.user.$get('presences')
-                                            .then((presences: any) => {
-
-                                                this.data.response = {
-                                                    ...this.data.response,
-                                                    presence: presences
-                                                }
 
 
 
-                                                if (this.Nextchaine != null) {
-                                                    console.log('going to next chaine');
-                                                    this.Nextchaine.process()
-                                                        .then((resp: any) => {
-                                                            // resp is her false or true
-                                                            if (resp) {
-                                                                resolve(resp);
-                                                            } else {
-                                                                reject(resp);
-                                                            }
+                                        if (this.Nextchaine != null) {
+                                            console.log('going to next chaine');
+                                            this.Nextchaine.process()
+                                                .then((resp: any) => {
+                                                    // resp is her false or true
+                                                    if (resp) {
+                                                        resolve(resp);
+                                                    } else {
+                                                        reject(resp);
+                                                    }
 
-                                                        })
-                                                        .catch((err: any) => {
-                                                            // console.log(err);
-                                                            //console.log('Error');
-                                                            reject(err);
-                                                        });
-                                                } else {
-                                                    console.log('this is the end of the chaine');
-                                                    resolve(true);
-                                                }
+                                                })
+                                                .catch((err: any) => {
+                                                    // console.log(err);
+                                                    //console.log('Error');
+                                                    reject(err);
+                                                });
+                                        } else {
+                                            console.log('this is the end of the chaine');
+                                            resolve(true);
+                                        }
 
-
-
-                                            })
-                                            .catch(((err: any) => {
-                                                console.log(err);
-                                                reject(err);
-                                            }))
 
 
 
@@ -150,46 +135,33 @@ export class NullPresence implements ResponsibilitiesHolder {
                                 this.data.elements
                                     .model.user.$add('presences', presence)
                                     .then((resp: any) => {
-                                        this.data.elements
-                                            .model.user.$get('presences')
-                                            .then((presences: any) => {
-
-                                                this.data.response = {
-                                                    ...this.data.response,
-                                                    presence: presences
-                                                }
 
 
 
-                                                if (this.Nextchaine != null) {
-                                                    console.log('going to next chaine');
-                                                    this.Nextchaine.process()
-                                                        .then((resp: any) => {
-                                                            // resp is her false or true
-                                                            if (resp) {
-                                                                resolve(resp);
-                                                            } else {
-                                                                reject(resp);
-                                                            }
+                                        if (this.Nextchaine != null) {
+                                            console.log('going to next chaine');
+                                            this.Nextchaine.process()
+                                                .then((resp: any) => {
+                                                    // resp is her false or true
+                                                    if (resp) {
+                                                        resolve(resp);
+                                                    } else {
+                                                        reject(resp);
+                                                    }
 
-                                                        })
-                                                        .catch((err: any) => {
-                                                            // console.log(err);
-                                                            //console.log('Error');
-                                                            reject(err);
-                                                        });
-                                                } else {
-                                                    console.log('this is the end of the chaine');
-                                                    resolve(true);
-                                                }
+                                                })
+                                                .catch((err: any) => {
+                                                    // console.log(err);
+                                                    //console.log('Error');
+                                                    reject(err);
+                                                });
+                                        } else {
+                                            console.log('this is the end of the chaine');
+                                            resolve(true);
+                                        }
 
 
 
-                                            })
-                                            .catch(((err: any) => {
-                                                console.log(err);
-                                                reject(err);
-                                            }))
 
 
 

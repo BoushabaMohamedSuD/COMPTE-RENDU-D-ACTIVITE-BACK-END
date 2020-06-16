@@ -1,3 +1,4 @@
+import { Absence } from './../../../../Model/models/Absence';
 import { Presence } from './../../../../Model/models/Presence';
 import { ResponsibilitiesHolder } from './../../../Responsibilities/Holders/ResponsibilitiesHolder';
 
@@ -66,51 +67,39 @@ export class NullAbsence implements ResponsibilitiesHolder {
                             statusNullAbsence: "create null absence"
                         }
 
-                        Presence.create(info)
-                            .then((presence) => {
+                        Absence.create(info)
+                            .then((absence) => {
                                 this.data.elements
-                                    .model.user.$add('presences', presence)
+                                    .model.user.$add('absences', absence)
                                     .then((resp: any) => {
-                                        this.data.elements
-                                            .model.user.$get('presences')
-                                            .then((presences: any) => {
-
-                                                this.data.response = {
-                                                    ...this.data.response,
-                                                    presence: presences
-                                                }
 
 
 
-                                                if (this.Nextchaine != null) {
-                                                    console.log('going to next chaine');
-                                                    this.Nextchaine.process()
-                                                        .then((resp: any) => {
-                                                            // resp is her false or true
-                                                            if (resp) {
-                                                                resolve(resp);
-                                                            } else {
-                                                                reject(resp);
-                                                            }
 
-                                                        })
-                                                        .catch((err: any) => {
-                                                            // console.log(err);
-                                                            //console.log('Error');
-                                                            reject(err);
-                                                        });
-                                                } else {
-                                                    console.log('this is the end of the chaine');
-                                                    resolve(true);
-                                                }
+                                        if (this.Nextchaine != null) {
+                                            console.log('going to next chaine');
+                                            this.Nextchaine.process()
+                                                .then((resp: any) => {
+                                                    // resp is her false or true
+                                                    if (resp) {
+                                                        resolve(resp);
+                                                    } else {
+                                                        reject(resp);
+                                                    }
+
+                                                })
+                                                .catch((err: any) => {
+                                                    // console.log(err);
+                                                    //console.log('Error');
+                                                    reject(err);
+                                                });
+                                        } else {
+                                            console.log('this is the end of the chaine');
+                                            resolve(true);
+                                        }
 
 
 
-                                            })
-                                            .catch(((err: any) => {
-                                                console.log(err);
-                                                reject(err);
-                                            }))
 
 
 
@@ -138,7 +127,7 @@ export class NullAbsence implements ResponsibilitiesHolder {
                             ...this.data.response,
                             statusNullAbsence: "update null absence"
                         }
-                        Presence.update(info,
+                        Absence.update(info,
                             {
                                 where: {
                                     Day: info.Day,
@@ -146,50 +135,34 @@ export class NullAbsence implements ResponsibilitiesHolder {
                                     Year: info.Year
                                 }
                             })
-                            .then((presence) => {
+                            .then((absence) => {
                                 this.data.elements
-                                    .model.user.$add('presences', presence)
+                                    .model.user.$add('absences', absence)
                                     .then((resp: any) => {
-                                        this.data.elements
-                                            .model.user.$get('presences')
-                                            .then((presences: any) => {
-
-                                                this.data.response = {
-                                                    ...this.data.response,
-                                                    presence: presences
-                                                }
 
 
 
-                                                if (this.Nextchaine != null) {
-                                                    console.log('going to next chaine');
-                                                    this.Nextchaine.process()
-                                                        .then((resp: any) => {
-                                                            // resp is her false or true
-                                                            if (resp) {
-                                                                resolve(resp);
-                                                            } else {
-                                                                reject(resp);
-                                                            }
+                                        if (this.Nextchaine != null) {
+                                            console.log('going to next chaine');
+                                            this.Nextchaine.process()
+                                                .then((resp: any) => {
+                                                    // resp is her false or true
+                                                    if (resp) {
+                                                        resolve(resp);
+                                                    } else {
+                                                        reject(resp);
+                                                    }
 
-                                                        })
-                                                        .catch((err: any) => {
-                                                            // console.log(err);
-                                                            //console.log('Error');
-                                                            reject(err);
-                                                        });
-                                                } else {
-                                                    console.log('this is the end of the chaine');
-                                                    resolve(true);
-                                                }
-
-
-
-                                            })
-                                            .catch(((err: any) => {
-                                                console.log(err);
-                                                reject(err);
-                                            }))
+                                                })
+                                                .catch((err: any) => {
+                                                    // console.log(err);
+                                                    //console.log('Error');
+                                                    reject(err);
+                                                });
+                                        } else {
+                                            console.log('this is the end of the chaine');
+                                            resolve(true);
+                                        }
 
 
 
